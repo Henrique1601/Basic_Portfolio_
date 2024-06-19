@@ -1,6 +1,6 @@
 let btnMenu = document.getElementById('menuCheckbox');
 
-projetoJson.map((projeto, index) => {
+/*projetoJson.map((projeto, index) => {
 	let projetoItem = document.querySelector('.models .project').cloneNode(true);
 
 	projetoItem.querySelector('.project img').src = projeto.img;
@@ -17,7 +17,7 @@ projetoJson.map((projeto, index) => {
 
 	document.querySelector('.projects__container').append(projetoItem);
 })
-
+*/
 document.addEventListener('click', event => {
 	if (event.target  != btnMenu) {
 		btnMenu.checked = false;
