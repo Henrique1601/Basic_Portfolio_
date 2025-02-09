@@ -8,8 +8,8 @@
 }
 
 .black{
-	--color-white:rgb(0, 0, 0);
-	--bgc:black ;
+	--color-white:#;
+	--bgc:#010409 ;
 	--color__green:white ;
 	--color__black:  #23ed77;
 	--tr-color: #23ed77 ;
@@ -30,6 +30,26 @@ body {
 	overflow-x: hidden;
 	font-family: monospace, arial, sans-serif;
 	background: var(--color__white);
+	border-radius: 10px;
+}
+
+header {
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  background:#292b2f ; 
+  position: sticky;
+  top: 0;
+  transition: background 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+nav{
+background: #292b2f; 
+}
+
+main{
+  border-radius: 10px;
 }
 
 b {

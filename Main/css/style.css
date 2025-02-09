@@ -1,13 +1,9 @@
-header {
-  display: flex;
-  align-items: flex-end;
-  padding: 1.5rem;
-}
 
 .menu {
   margin-top: 10px;
 }
 
+/* 3 Lines */
 .menu__fakeTrigger {
   position: absolute;
   z-index: 1000;
@@ -51,6 +47,7 @@ header {
   transform: rotate(-45deg) scaleX(1.25);
 }
 
+/* Navigation */
 .menu ul {
   position: absolute;
   left: 0;
@@ -61,11 +58,11 @@ header {
   margin-left: -300px;
   padding-top: 100px;
   list-style: none;
-  background: var(--color__black);
+  /* background: var(--color__black); */
   transition: all 0.2s ease-in-out;
 }
 .menu ul li{
-  background: var(--);
+  background: #292b2f;
 
 }
 .menu .menu__fakeTrigger:checked ~ ul {
@@ -90,7 +87,7 @@ header {
   display: inline-block;
   width: auto;
   text-decoration: none;
-  color: var(--color_white);
+
 }
 
 .menu ul li a::after {
@@ -98,7 +95,7 @@ header {
   display: block;
   width: 0;
   height: 2px;
-  background: var(--tr-color);
+  /* background: var(--tr-color); */
   transition: all 0.2s ease-in-out;
 }
 
