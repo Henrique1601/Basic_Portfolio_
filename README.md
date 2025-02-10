@@ -1,7 +1,7 @@
 ## Welcome my Portfolio
 
 ##
-[portfólio]: https://bezerraportifolio.netlify.app/
+[portfólio](https://bezerraportifolio.netlify.app/)
 ##
 
 # Basic Portfolio for show my skills
