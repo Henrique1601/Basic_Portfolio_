@@ -1,25 +1,8 @@
-:root {
-	--bgc:white ;
-	--color__black: #111;
-	--color__white: #f9f9f9;
-	--color__green: #23ed77;
-	--tr-color: #23ed77 ; 
-
-}
-
-.black{
-	--color-white:#;
-	--bgc:#010409 ;
-	--color__green:white ;
-	--color__black:  #23ed77;
-	--tr-color: #23ed77 ;
-}
-
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background: var(--bgc);
+
 }
 
 html {
@@ -29,23 +12,25 @@ html {
 body {
 	overflow-x: hidden;
 	font-family: monospace, arial, sans-serif;
-	background: var(--color__white);
+	/* background: var(--color__white); */
 	border-radius: 10px;
+	background: #0F19AA;
+	background: linear-gradient(to top, #0F19AA 0%, #000000 30%, #000000 70%, #0F19AA 100%);
+
 }
 
 header {
   display: flex;
   align-items: flex-end;
   padding: 1.5rem;
-  background:#292b2f ; 
   position: sticky;
   top: 0;
-  transition: background 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
   border-radius: 10px;
 }
 
 nav{
-background: #292b2f; 
+	color: #fff;
 }
 
 main{
@@ -69,7 +54,7 @@ b {
 .title .line {
 	width: 20px;
 	height: 4px;
-	background: var(--color__green);
+	/* background: var(--color__green); */
 }
 
 .section__about,
@@ -85,6 +70,16 @@ b {
 
 .models {
 	display: none;
+}
+
+footer{
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
+	align-items: center;
+	flex-direction: column;
+	border-radius: 10px;
+	margin-top: 30px;
 }
 
 @keyframes typewriter {
@@ -105,4 +100,146 @@ b {
 	100% {
 		border-color: transparent;
 	}
+}
+
+/* Copy this code after the above code */
+@keyframes customAni {
+  0% {
+	animation-timing-function: ease-in;
+	opacity: 1;
+	transform: translateX(48px);
+  }
+
+  24% {
+	opacity: 1;
+  }
+
+  40% {
+	animation-timing-function: ease-in;
+	transform: translateX(26px);
+  }
+
+  65% {
+	animation-timing-function: ease-in;
+	transform: translateX(13px);
+  }
+
+  82% {
+	animation-timing-function: ease-in;
+	transform: translateX(6.5px);
+  }
+
+  93% {
+	animation-timing-function: ease-in;
+	transform: translateX(4px);
+  }
+
+  25%,
+  55%,
+  75%,
+  87%,
+  98% {
+	animation-timing-function: ease-out;
+	transform: translateX(0px);
+  }
+
+  100% {
+	animation-timing-function: ease-out;
+	opacity: 1;
+	transform: translateX(0px);
+  }
+}
+/* Copy this code after the above code */
+@keyframes ProjectsAni {
+  0% {
+	transform: scale(0.5);
+	transform-origin: 50% 100%;
+  }
+
+  100% {
+	transform: scale(1);
+	transform-origin: 50% 100%;
+  }
+}
+/* Copy this code after the above code */
+@keyframes TechsAni {
+  0% {
+	animation-timing-function: ease-in;
+	opacity: 1;
+	transform: translateY(-45px);
+  }
+
+  24% {
+	opacity: 1;
+  }
+
+  40% {
+	animation-timing-function: ease-in;
+	transform: translateY(-24px);
+  }
+
+  65% {
+	animation-timing-function: ease-in;
+	transform: translateY(-12px);
+  }
+
+  82% {
+	animation-timing-function: ease-in;
+	transform: translateY(-6px);
+  }
+
+  93% {
+	animation-timing-function: ease-in;
+	transform: translateY(-4px);
+  }
+
+  25%,
+  55%,
+  75%,
+  87% {
+	animation-timing-function: ease-out;
+	transform: translateY(0px);
+  }
+
+  100% {
+	animation-timing-function: ease-out;
+	opacity: 1;
+	transform: translateY(0px);
+  }
+}
+/* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+/** {
+  scrollbar-width: thin;
+  scrollbar-color: #FFFFFF #FFFFFF;
+}*/
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #000000;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #ABB3B2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #808A88;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #FFFFFF;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #8B8B8B;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #FFFFFF;
 }

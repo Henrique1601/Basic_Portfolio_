@@ -24,13 +24,13 @@
   width: 33px;
   height: 2px;
   margin-bottom: 12px;
-  background: var(--color__black);
+ 
   border-radius: 2px;
   transition: all 0.2s ease-in-out;
 }
 
 .menu .menu__fakeTrigger:checked ~ .menu__lines span {
-  background: var(--color__green);
+ 
 }
 
 .menu .menu__fakeTrigger:checked ~ .menu__lines span:nth-child(1) {
@@ -47,7 +47,7 @@
   transform: rotate(-45deg) scaleX(1.25);
 }
 
-/* Navigation */
+/* Nav */
 .menu ul {
   position: absolute;
   left: 0;
@@ -58,12 +58,15 @@
   margin-left: -300px;
   padding-top: 100px;
   list-style: none;
-  /* background: var(--color__black); */
   transition: all 0.2s ease-in-out;
 }
 .menu ul li{
-  background: #292b2f;
-
+ display: flex;
+ flex-direction: row;
+ border: 1px solid ;
+ border-radius: 5px;
+ background: #292b2f;
+ margin: 5px;
 }
 .menu .menu__fakeTrigger:checked ~ ul {
   margin-left: 0;
@@ -95,13 +98,23 @@
   display: block;
   width: 0;
   height: 2px;
-  /* background: var(--tr-color); */
   transition: all 0.2s ease-in-out;
 }
 
 .menu ul li a:hover::after,
 .menu ul li a:focus::after {
   width: 100%;
+}
+
+/* Apresetation */
+.section__apresentation h1,
+.section__apresentation span{
+color: #fff;
+}
+.section__about p,
+.section__about h2{
+  color: #fff;
+  font-size: 1.3rem;
 }
 
 .section__apresentation {
@@ -123,11 +136,11 @@
 }
 
 .section__apresentation .section__apresentation--text h1 span {
-  color: var(--color__green);
+  color: #fff;
 }
 
 .section__apresentation .section__apresentation--text > span {
-  border-right: 5px solid black;
+  border-right: 5px solid rgb(255, 255, 255);
   white-space: nowrap;
   overflow: hidden;
   animation: typewriter 2s steps(13) 1s alternate,
@@ -138,24 +151,30 @@
   display: inline-block;
   margin-top: 3rem;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--color__green);
+  border: 2px solid ;
   border-radius: 6px;
   text-decoration: none;
-  color: var(--color__green);
   font-weight: bold;
   transition: all 0.2s ease-in-out;
+  color: #fff;
 }
 
 .section__apresentation .section__apresentation--text a:hover {
-  background: var(--tr-color);
-  color: var(--color__white);
+background: #292b2f;
+color: #fff;
 }
 
 .section__apresentation .section__apresentation--image {
   display: none;
-  box-shadow: 2px 2px 3px rgb(14, 143, 14);
+  box-shadow: 0px 4px 10px rgb(255, 255, 255);
+  animation: customAni 3s ease-in-out 0s 1 normal none;
 }
 
+/* Section techs */
+.section__techs h2,
+.section__techs figcaption{
+  color: #fff;
+}
 .section__techs .description {
   display: flex;
   justify-content: space-between;
@@ -165,6 +184,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  animation: TechsAni 2s ease-in-out 3.5s 1 normal none;
 }
 
 .section__techs .description figure {
@@ -175,7 +195,7 @@
   width: 150px;
   padding: 1rem;
   text-align: center;
-  border: 1px solid var(--color__green);
+  border: 1px solid #fff;
   border-radius: 6px;
 }
 
@@ -183,7 +203,14 @@
   width: 40px;
 }
 
-.projects__container {
+/* Projects */
+.section__projects h4,
+.section__projects h2,
+.section__projects p {
+color: #fff;
+}
+
+.projects__container{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
@@ -191,6 +218,11 @@
 
 .projects__container .project {
   max-width: 375px;
+
+}
+.projects__container .project img:hover{
+  /* Copy code to element you want to animate */
+  animation: ProjectsAni 2s ease-in-out 0s 1 normal none;
 }
 
 .projects__container .project img {
@@ -222,14 +254,62 @@
   text-align: center;
   text-decoration: none;
   font-weight: bold;
-  background: var(--color__green);
-  color: var(--color__white);
+  background: #fff;
+  color: #292b2f;
   border-radius: 6px;
-  border: 1px solid var(--color__green);
-  transition: all 0.3s ease-in-out;
+  border: 1px solid #fff;
+  transition:  0.3s ease-in-out;
 }
 
 .projects__container .project .project__description .links a:hover {
-  background: var(--color__white);
-  color: var(--color__green);
+  background: #292b2f; ;
+  color: #fff; 
+  transition:  0.3s ease-in-out
 }
+
+/* Mais projetos */
+.More-projects {
+
+}
+
+.More-projects a {
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background: #ffffff00;
+  color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.More-projects a:hover {
+  background: #292b2f; ;
+  color: #fff; 
+  transition: all 0.3s ease-in-out
+}
+/* Footer / contacts*/
+.title-contacts{
+  text-align: left;
+  color: #fff;
+}
+.line-contacts{
+  width: 20px;
+  height: 4px;
+ 
+}
+.contacts__container{
+  display: flex;
+  align-items: left;
+}
+.contacts__container .contact-icon{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 10px;
+  justify-content: space-around;
+}
+
+
