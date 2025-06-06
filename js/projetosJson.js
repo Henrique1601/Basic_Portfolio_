@@ -1,8 +1,0 @@
-/*let projetoJson = [
-	{id: 1, name: 'Price Cards', img: 'img/images/projeto_1.png', description: 'Cartões de preço para venda de algum plano ou produto.', url: 'https://micaelsantiago.github.io/price-cards/', repositorio: 'https://github.com/micaelsantiago/price-cards'},
-	{id: 2, name: 'Cronômetro', img: 'img/images/projeto_2.png', description: 'Cronômetro simples usando JavaScript puro.', url: 'https://cronometro-eta.vercel.app/', repositorio: 'https://github.com/micaelsantiago/Cronometro'},
-	{id: 3, name: 'Clone eSound', img: 'img/images/projeto_3.png', description: 'Clone da interface inicial do site de músicas "eSound".', url: 'https://micaelsantiago.github.io/esound_clone/', repositorio: 'https://github.com/micaelsantiago/esound_clone'},
-	{id: 4, name: 'Compra de Pizzas', img: 'img/images/projeto_4.png', description: 'Carrinho de compras de pizzas.', url: 'https://micaelsantiago.github.io/projetoPizzaria-B7Web/', repositorio: 'https://github.com/micaelsantiago/projetoPizzaria-B7Web'},
-	{id: 5, name: 'NFT Card', img: 'img/images/projeto_5.png', description: 'Cartão componente de NFT.', url: 'https://frontend-mentor-nft-omega.vercel.app/', repositorio: 'https://github.com/micaelsantiago/Frontend_Mentor-NFT'},
-	{id: 6, name: 'Cartão de Produto', img: 'img/images/projeto_6.png', description: 'Cartão de venda de produtos.	', url: 'http://product-preview-card-component-beryl-eta.vercel.app/', repositorio: 'https://github.com/micaelsantiago/ProductPreviewCardComponent'}
-];*/
