@@ -1,3 +1,5 @@
+
+
 let btnMenu = document.getElementById('menuCheckbox');
 
 /*projetoJson.map((projeto, index) => {
@@ -28,3 +30,23 @@ function toggleMode(){
   const html = document.documentElement
   html.classList.toggle('black')
 }
+
+(function() {
+    emailjs.init("qm-LMfAJhwP21QQeK"); // Substitua pelo seu User ID do EmailJS
+})();
+
+window.onload = function() {
+	// to:"henriquebs1601@gmail.com"
+    const date = new Date().toLocaleDateString();
+    const time = new Date().toLocaleTimeString();
+
+    emailjs.send("Gmail_to_me", "template_bni0kyh", {
+        date: date,
+        time: time
+    })
+    .then(function(response) {
+        console.log("E-mail enviado com sucesso!", response);
+    }, function(error) {
+        console.log("Erro ao enviar o e-mail:", error);
+    });
+};
