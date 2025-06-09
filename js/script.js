@@ -43,8 +43,14 @@ function toggleMode() {
 })();
 
 window.onload = function () {
-  // Lista de IPs que não devem receber emails
-  const excludedIPs = ["179.167.62.216"]; // Substitua com seu IP
+  // Lista de IPs que não devem receber emails - carregada de forma segura
+  const excludedIPs = [];
+
+  // Tenta carregar o IP de uma variável de ambiente ou localStorage
+  const savedIP = localStorage.getItem("myIP");
+  if (savedIP) {
+    excludedIPs.push(savedIP);
+  }
 
   // Função para verificar se deve enviar o email
   fetch("https://api.ipify.org?format=json")
@@ -79,3 +85,16 @@ window.onload = function () {
       console.error("Erro ao obter IP:", error);
     });
 };
+
+// Função para configurar seu IP (você pode chamar isso no console do navegador)
+function setMyIP() {
+  fetch("https://api.ipify.org?format=json")
+    .then((response) => response.json())
+    .then((data) => {
+      localStorage.setItem("myIP", data.ip);
+      console.log("IP salvo com sucesso!");
+    })
+    .catch((error) => {
+      console.error("Erro ao obter IP:", error);
+    });
+}
