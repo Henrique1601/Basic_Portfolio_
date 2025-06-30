@@ -187,8 +187,11 @@
 
 .section__techs .description {
   display: flex;
+  align-items: center;
+  justify-content: center;
+
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
 .section__techs .description figure {
@@ -221,20 +224,13 @@
   justify-content: center;
 }
 
-.projects__container {
-  /* max-width: 375px; */
-  /* height: 800px; */
-  
-
-}
-
 .project{
   border: 1px solid #fff;
   border-radius: 6px;
   box-shadow: 0px 4px 10px rgb(255, 255, 255);
   animation: customAni 3s ease-in-out 0s 1 normal none;
   height: 720px;
-  width: 400px;
+  width: 350px;
   padding: 15px;
   box-sizing: border-box;
   display: flex;
@@ -256,7 +252,6 @@
 .projects__container .project img:hover {
   transform: scale(1.1) translateY(-10px);
   box-shadow: 0 10px 25px rgba(255, 255, 255, 0.807);
-
 }
 
 .project__description {
@@ -271,9 +266,6 @@
   margin-top: 20px;
 }
 
-.projects__container .project .project__description,
-.projects__container .project  .links {
-}
 
 .projects__container .project .project__description h4 {
   font-size: 1.2rem;

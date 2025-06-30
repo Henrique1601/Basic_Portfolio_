@@ -12,11 +12,9 @@ html {
 body {
 	overflow-x: hidden;
 	font-family: monospace, arial, sans-serif;
-	/* background: var(--color__white); */
 	border-radius: 10px;
 	background: #0F19AA;
 	background: linear-gradient(to top, #0F19AA 0%, #000000 30%, #000000 70%, #0F19AA 100%);
-
 }
 
 header {
@@ -40,10 +38,6 @@ main{
 b {
 	color: var(--color__green);
 }
-
-/*body * {
-	outline: 1px solid red;
-}*/
 
 .container {
 	max-width: 1240px;
@@ -115,6 +109,29 @@ figure{
 figure.animate { 
     animation: figure 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0s 1 normal both; 
 }
+/* 2 pagina */
+.btn{
+	padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  display: inline-block;
+  background: #ffffff00;
+  color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #fff;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 5px 5px 100px 35px rgba(226, 215, 215, 0.47);
+}
+
+.btn:hover {
+  background: #292b2f;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.1) translateY(0px);
+}
+
 
 /* @keyframes customAni {
   0% {
