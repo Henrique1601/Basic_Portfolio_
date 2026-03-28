@@ -1,0 +1,61 @@
+<!-- Language Toggle -->
+<div class="language-toggle" id="languageToggle" title="Mudar idioma">
+    <span class="language-toggle__flag" id="langFlag"></span>
+    <span class="language-toggle__label" id="langLabel">PT</span>
+</div>
+
+<!-- Theme Toggle -->
+<button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+    <span id="themeIcon"></span>
+</button>
+
+<!-- Back to Top -->
+<button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
+    ↑
+</button>
+
+<!-- Badge Disponível para Trabalho -->
+<div class="available-badge">
+    <span class="available-badge__dot"></span>
+    <span>Disponível para trabalho</span>
+</div>
+
+<!-- WhatsApp Widget -->
+<div class="whatsapp-widget">
+    <div class="whatsapp-widget__tooltip">Fale comigo no WhatsApp!</div>
+    <a href="https://api.whatsapp.com/send?phone=5513991383222&text=Olá!" target="_blank" class="whatsapp-widget__button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+</div>
+
+<!-- Music Widget -->
+<div class="music-widget" id="musicWidget">
+    <div class="music-widget__tooltip">Música ambiente</div>
+    <button class="music-widget__toggle" id="musicToggle" aria-label="Toggle música">
+        <svg class="music-widget__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+        </svg>
+        <span class="music-widget__bars">
+            <span></span><span></span><span></span>
+        </span>
+    </button>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- Install PWA Banner -->
+<div class="pwa-install-banner" id="pwaInstallBanner">
+    <div class="pwa-install-banner__content">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px;">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg> Instalar app
+        <div class="pwa-install-banner__actions">
+            <button id="pwaInstallBtn" class="pwa-install-banner__btn">Instalar</button>
+            <button id="pwaDismissBtn" class="pwa-install-banner__dismiss">&times;</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+/* ========================================
+   MAIN CSS - Import all modules
+   ======================================== */
+@import url('variables.css');
+@import url('base.css');
+@import url('animations.css');
+@import url('components.css');
+@import url('widgets.css');
+@import url('lightbox.css');
+@import url('effects.css');
+@import url('sections.css');
+@import url('medias.css');

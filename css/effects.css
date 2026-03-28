@@ -1,0 +1,138 @@
+/* ========================================
+   MORPHING SHAPES
+   ======================================== */
+.morphing-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.morph-shape {
+  position: absolute;
+  opacity: 0.1;
+  animation: morphFloat 20s ease-in-out infinite;
+}
+
+.morph-shape-1 {
+  top: 10%;
+  left: 5%;
+  width: 300px;
+  height: 300px;
+  animation-delay: 0s;
+}
+
+.morph-shape-2 {
+  top: 60%;
+  right: 10%;
+  width: 200px;
+  height: 200px;
+  animation-delay: -5s;
+}
+
+.morph-shape-3 {
+  bottom: 20%;
+  left: 30%;
+  width: 150px;
+  height: 150px;
+  animation-delay: -10s;
+}
+
+/* ========================================
+   PARTICLES
+   ======================================== */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ========================================
+   CUSTOM CURSOR
+   ======================================== */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--text-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.hover {
+  transform: scale(1.5);
+  background: var(--text-primary);
+}
+
+.custom-cursor.clicking {
+  transform: scale(0.8);
+}
+
+/* ========================================
+   STACK MOMENTO
+   ======================================== */
+.stack-moment {
+  margin-top: 2rem;
+}
+
+.stack-moment__title {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stack-moment__title svg {
+  animation: pulse 2s infinite;
+}
+
+.stack-moment__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stack-moment__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.stack-moment__item:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 30px var(--shadow-glow);
+}
+
+.stack-moment__icon {
+  font-size: 1.5rem;
+}
+
+.stack-moment__info h5 {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.stack-moment__info p {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}

@@ -1,0 +1,188 @@
+/* ========================================
+   BASE STYLES
+   ======================================== */
+body {
+  overflow-x: hidden;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  border-radius: 0;
+  background: var(--bg-primary);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  position: sticky;
+  top: 0;
+  transition: 0.3s ease-in-out;
+  border-radius: 10px;
+  z-index: 100;
+}
+
+nav {
+  color: var(--text-primary);
+}
+
+main {
+  border-radius: 10px;
+}
+
+b {
+  color: var(--text-primary);
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.title h2 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  width: 60px;
+  height: 4px;
+  background: var(--text-primary);
+  border-radius: 2px;
+}
+
+.section__about,
+.section__techs,
+.section__projects {
+  margin: 4rem 0;
+}
+
+.description,
+.project {
+  margin: 1rem 0;
+}
+
+.models {
+  display: none;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.scroll-section {
+  margin: 4rem 0;
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #ABB3B2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #808A88;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--scrollbar-thumb);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #8B8B8B;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--scrollbar-thumb);
+}
+
+/* ========================================
+   SELECTION & FOCUS
+   ======================================== */
+::selection {
+  background: var(--accent-color);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   SVG ICONS
+   ======================================== */
+.stack-moment__icon,
+.certificate__icon,
+.popup__icon,
+.visitor-counter__icon svg {
+  color: var(--accent-color);
+}
+
+.theme-toggle svg,
+.back-to-top svg {
+  stroke: var(--text-primary);
+}
+
+.lightbox__close {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.music-widget__icon {
+  stroke: var(--text-primary);
+}
+
+.music-widget__toggle.playing .music-widget__bars span {
+  background: white;
+}
+
+/* ========================================
+   RESPONSIVE BASE
+   ======================================== */
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+}
+
+/* ========================================
+   MOBILE CURSOR
+   ======================================== */
+@media (max-width: 1023px) {
+  .custom-cursor {
+    display: none !important;
+  }
+  
+  body {
+    cursor: auto;
+  }
+}

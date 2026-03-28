@@ -1,338 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-	<link rel="stylesheet" href="./css/global.css">
-	<link rel="stylesheet" href="./css/style.css">
-	<link rel="stylesheet" href="./css/medias.css">
+	<!-- APP -->
+	<meta name="description" content="Portfólio de Henrique Bezerra - Full-Stack Developer">
+	<meta name="theme-color" content="#6366f1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta property="og:title" content="Henrique Bezerra - Full-Stack Developer">
+	<meta property="og:description" content="Portfólio profissional com projetos e tecnologias">
+	<meta property="og:image" content="./src/images/IMG_20231010_155423.png">
+	<link rel="manifest" href="./manifest.json">
+	<link rel="apple-touch-icon" href="./src/icons/icon.svg">
+	<link rel="icon" type="image/svg+xml" href="./src/icons/icon.svg">
+	<!-- CSS -->
+	<link rel="stylesheet" href="./css/main.css">
 	<title>Henrique Bezerra dos Santos</title>
 
 	<!-- EmailJs -->
 	<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+	
+	<!-- Supabase -->
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
-	<!-- <div class="models">
-		<div class="project">
-			<img src="" alt="">
+	<!-- Efeitos (carregados via JS) -->
 
-			<div class="project__description">
-				<h4></h4>
-				<p></p>
-				
-				<div class="links">
-					<a href=""></a>
-					<a href=""></a>
-				</div>
-			</div>
-		</div>
-	</div> -->
+	<!-- Widgets flutuantes (carregados via JS) -->
 
-	<!--NAV  -->
-	<header class="container">
-		<nav class="menu">
-			<input type="checkbox" class="menu__fakeTrigger" id="menuCheckbox">
-
-			<div class="menu__lines">
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
-
-			<ul>
-				<li><a href="#">Início</a></li>
-				<li><a href="#about-me">Sobre mim</a></li>
-				<li><a href="#techs">Tecnologias</a></li>
-				<li><a href="#projects">Projetos</a></li>
-				<li><a href="#contacts">Contatos</a></li>
-				<!-- <button id="black" onclick="toggleMode()">trocar</button> -->
-
-				<li id="social">
-					<a href="mailto:" target="_blank"><img src="./SVG/gmail.svg" alt=""></a>
-					<a href="" target="_blank"><img src="./SVG/github_W.svg" alt=""></a>
-					<a href="" alt=""></a>
-				</li>
-			</ul>
-		</nav>
-	</header>
+	<!--NAV placeholder -->
+	<header component="header"></header>
 
 	<main class="container">
-		<section class="section__apresentation" id="apresentation">
-			<div class="section__apresentation--text">
-				<h1>Me chamo <span>Henrique Bezerra dos Santos</span>.</h1>
-				<span>Full-Stack Developer</span>
-
-				<a href="./pdf/CV atl ago25- Henrique Bezerra dos Santos.pdf" download="CV Henrique" class="button">
-					Baixar CV</a>
-			</div>
-
-			<div class="section__apresentation--image">
-				<img src="./imagens/IMG_20231010_155423.png" width="300px" height="350px">
-			</div>
-		</section>
-
-		<section class="section__about" id="about-me">
-			<div class="title">
-				<h2>Sobre mim</h2>
-				<div class="line"></div>
-			</div>
-
-			<div class="description">
-				<p>Todos os dias estudando desenvolvimento Full-Stack para melhorar e aprender ao máximo vários métodos com as tecnologias. Busco constantemente me desafiar com projetos inovadores e compartilhar conhecimento com a comunidade, gosto de trabalhar em equipe e colaborar para alcançar objetivos comuns. Sou um entusiasta de HTML, CSS , JS, React, Angular e  Node.js e adoro explorar novas possibilidades, para me desafiar desenvolvo projetos Full-Stack utilizando diversas tecnologias. .</p>
-			</div>
-		</section>
-
-		<section class="section__techs" id="techs"> <!--Resolver o bug do css -->
-			<div class="title">
-				<h2>Tecnologias</h2>
-				<div class="line"></div>
-			</div>
-
-			<div class="description">
-				<figure>
-					<img src="./SVG/html.svg" alt="">
-					<figcaption>HTML5</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./SVG/css.svg" alt="">
-					<figcaption>CSS3</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./imagens/icons8-javascript.gif" >
-					<figcaption>JavaScript</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./SVG/bootstrap.svg" alt="">
-					<figcaption>Bootstrap</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./SVG/git.svg" alt="">
-					<figcaption>Git</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./SVG/github_B.svg" alt="">
-					<figcaption>Github</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./SVG/bootstrap-original.svg" alt="">
-					<figcaption>BootStrap</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./SVG/icons8-php-logo.svg" alt="">
-					<figcaption>PHP</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./SVG/tailwindcss-original.svg" alt="">
-					<figcaption>Tailwindcss</figcaption>
-				</figure>
-
-				<figure>
-					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" />
-					<figcaption>Mysql</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./SVG/icons8-react.svg" alt="">
-					<figcaption>React</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./SVG/icons8-angular.svg" alt="">
-					<figcaption>Angular</figcaption>
-				</figure>
-
-				<figure>
-					<img src="./SVG/icons8-sass.svg" alt="">
-					<figcaption>Sass/Scss</figcaption>
-				</figure>
-				<figure>
-					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" height="40"
-						alt="nextjs logo" />
-					<figcaption>Nextjs</figcaption>
-
-				</figure>
-
-				<figure>
-					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-						alt="firebase logo" />
-					<figcaption>FireBase</figcaption>
-				</figure>
-
-				<figure>
-					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs logo">
-					<figcaption>Nodejs</figcaption>
-				</figure>
-
-				<figure>
-					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="sqlite logo" />
-					<figcaption>Sqlite</figcaption>
-				</figure>
-
-				<figure>
-					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-						alt="mongodb logo" />
-					<figcaption>MongoDB</figcaption>
-				</figure>
-			</div>
-		</section>
-
-		<section class="section__projects" id="projects">
-			<div class="title">
-				<h2>Projetos</h2>
-				<div class="line"></div>
-			</div>
-
-			<div class="projects__container">
-
-				<div class="project">	
-					<img src="./imagens/Advice generator.png" alt="">
-
-					<div class="project__description">
-						<h4>Advice Generator</h4>
-						<p>Projeto inspirado no site Frontend Mentor</p>
-						<p>Tecnologias usadas: HTML, CSS, JS e API</p>
-					</div>
-						<div class="links">
-							<a href="https://github.com/Henrique1601/Advice-Generator-app" target="_blank">Repositório</a>
-							<a href="https://advicegenerator2024.netlify.app/" target="_blank">Demo</a>
-						</div>
-					
-				</div>
-
-				<div class="project">
-					<img src="./imagens/PassWord Checker.png" alt="">
-
-					<div class="project__description">
-						<h4>PassWord Checker</h4>
-						<p>Um projeto para desafio do Fron-End mentor</p>
-						<p>Tecnologias usadas: HTML, CSS, JS </p>
-					</div>
-
-						<div class="links">
-							<a href="https://github.com/Henrique1601/PassWord-Checker" target="_blank">Repositório</a>
-							<a href="https://passwordchecker2024.netlify.app/" target="_blank">Demo</a>
-						</div>
-
-				</div>
-				<div class="project">
-					<img src="./imagens/image.png" alt="">
-
-					<div class="project__description">
-						<h4>Gerador de código QR </h4>
-						<p>Um projeto inspirado no curso do Matheus Battisti, que gere um código qr toda vez em que você colocar um
-							link </p>
-						<p>Tecnologias usadas: HTML, CSS e JS e API</p>
-					</div>
-						<div class="links">
-							<a href="https://github.com/Henrique1601/Gerador-de-codigo-QR" target="_blank">Repositório</a>
-							<a href="https://geradorqrcodee.netlify.app/" target="_blank">Demo</a>
-						</div>
-
-					
-				</div>
-				<div class="project">
-					<img src="./imagens/Sistema_Finan.png" alt="">
-
-					<div class="project__description">
-						<h4>Financeiro Pessoal</h4>
-						<p>Um projeto que possa servir para algumas pessoas, esse projeto é para um controle pessoal de gastos e
-							ganhos, atualmente trabalhando ainda nele</p>
-						<p>Tecnologias usadas: HTML, CSS, JS, NodeJs e como banco de dados PostgreSql, banco de dados online usando
-							o Neon. </p>
-						<p>Obs: Configurações para rodar também com outro banco de dados o Sqlite em outra branch</p>
-					</div>
-
-						<div class="links">
-							<a href="https://github.com/Henrique1601/Projeto-Financeiro" target="_blank">Repositório</a>
-							<a href="https://projeto-financeiro-frontend.vercel.app" target="_blank">Demo</a>
-						</div>
-				</div>
-
-				<div class="project">
-					<img src="" alt="">
-
-					<div class="project__description">
-						<h4>Conversor de Moedas</h4>
-						<p>Conversor de Moedas feito com as Tecnologias PHP + API de real para dólar, trabalhei nesse projeto
-							inspirado no curso do Gustavo Guanabara</p>
-						<p>Tecnologias usadas: HTML, CSS, JS, PHP e API</p>
-						</div>
-						<div class="links">
-							<a href="https://github.com/Henrique1601/PHPexr/tree/master/Desafio%204">Repositório</a>
-							<a href="">Demo(ainda não está online)</a>
-						</div>
-
-					
-				</div>
-
-				<div class="project">
-					<img src="./imagens/Todo.png" alt="">
-
-					<div class="project__description">
-						<h4>To Do </h4>
-						<p>Um projeto trabalhado na faculdade</p>
-						<p>Tecnologias usadas: HTML, CSS, JS, Angular, API, NodeJS e como banco de dados MongoDB </p>
-						<p>Um projeto que ainda está em aperfeiçoamento...</p>
-						</div>
-						<div class="links">
-							<a href="https://github.com/Henrique1601/Todo_Angular" target="_blank">Repositório</a>
-							<a href="https://to-do-angular-3v.vercel.app/" target="_blank">Demo</a>
-						</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="More-projects">
-			<button class="Mais-projetos" id="Mais-projetos" type="button">Ver mais projetos... </button>
-			<!-- <a href="./MoreProjects/index.html">
-				Ver mais projetos...
-			</a> -->
-		</section>
-
-		<!-- Footer -->
-		<footer class="main-footer" id="contacts">
-
-			<div class="title-contacts">
-				<h2>Contatos</h2>
-				<div class="line-contacts"></div>
-			</div>
-
-			<div class="contacts__container">
-
-				<div class="contact-icon">
-					<a href="mailto:henriquebs1601@gmail.com">
-						<img src="./SVG/gmail.svg" alt="" width="50px" height="50px">
-					</a>
-				</div>
-
-				<div class="contact-icon">
-					<a href=" https://www.linkedin.com/in/henrique-bezerra-dos-santos-9802321a3/" target="_blank">
-						<img src="./SVG/linkedin.svg" alt="LinkedIn" width="50px" height="50px">
-					</a>
-				</div>
-
-				<div class="contact-icon">
-					<a href="https://api.whatsapp.com/send?phone=5513991383222&text=Olá!" target="_blank">
-						<img src="./SVG/icons8-whatsapp.svg" alt="icons8-WhatsApp">
-					</a>
-				</div>
-			</div>
-			<!-- <a href="https://storyset.com/web">Web illustrations by Storyset</a> -->
-		</footer>
+		<!-- Seções são carregadas via JS -->
+		<section class="scroll-section" id="home"></section>
+		<section class="scroll-section" id="counters"></section>
+		<section class="scroll-section" id="about-me"></section>
+		<section class="scroll-section" id="techs"></section>
+		<section class="scroll-section" id="projects"></section>
+		<section class="scroll-section" id="experience"></section>
+		<section class="scroll-section" id="certificates"></section>
+		<section class="scroll-section" id="contributions"></section>
+		<section class="scroll-section" id="testimonials"></section>
+		<section class="scroll-section" id="contacts"></section>
+		
+		<!-- Footer placeholder -->
+		<footer component="footer"></footer>
 	</main>
 
-	<!---- <script src="./js/projetosJson.js"></script> --->
-	<script src="./js/script.js"></script>
+	<script type="module" src="./src/js/main.js"></script>
 </body>
 
 </html>

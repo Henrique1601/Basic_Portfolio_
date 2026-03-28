@@ -1,0 +1,55 @@
+<!-- CONTATO COM FORMULÁRIO -->
+<section class="section__contact scroll-section" id="contacts">
+    <div class="title fade-in">
+        <h2>Contatos</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="contact__content fade-in">
+        <div class="contact__info">
+            <p>Tem algum projeto em mente ou quer conversar? Entre em contato!</p>
+            <div class="contact__links">
+                <a href="mailto:henriquebs1601@gmail.com">
+                    <img src="./src/svg/gmail.svg" alt="" width="30px" height="30px">
+                    henriquebs1601@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/henrique-bezerra-dos-santos-9802321a3/" target="_blank">
+                    <img src="./src/svg/linkedin.svg" alt="" width="30px" height="30px">
+                    LinkedIn
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=5513991383222&text=Olá!" target="_blank">
+                    <img src="./src/svg/icons8-whatsapp.svg" alt="" width="30px" height="30px">
+                    WhatsApp
+                </a>
+                <a href="https://github.com/Henrique1601" target="_blank">
+                    <img src="./src/svg/github_W.svg" alt="" width="30px" height="30px">
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+        <form class="contact__form" id="contactForm">
+            <div class="form__group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required placeholder="Seu nome">
+            </div>
+            <div class="form__group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required placeholder="seu@email.com">
+            </div>
+            <div class="form__group">
+                <label for="subject">Assunto</label>
+                <input type="text" id="subject" name="subject" required placeholder="Assunto da mensagem">
+            </div>
+            <div class="form__group">
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Sua mensagem..."></textarea>
+            </div>
+            <button type="submit" class="btn">
+                <span>Enviar Mensagem</span>
+                <span class="btn__loading" style="display: none;">Enviando...</span>
+            </button>
+            <div class="form__status" id="formStatus"></div>
+        </form>
+    </div>
+</section>
