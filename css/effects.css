@@ -136,3 +136,25 @@
   color: var(--text-secondary);
   font-size: 0.75rem;
 }
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .morph-shape {
+    animation: none;
+    opacity: 0.05;
+  }
+
+  #particles-canvas {
+    display: none;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+
+  .stack-moment__title svg {
+    animation: none;
+  }
+}

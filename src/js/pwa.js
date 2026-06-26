@@ -5,12 +5,9 @@ export function initPWA() {
   const pwaInstallBtn = document.getElementById("pwaInstallBtn");
   const pwaDismissBtn = document.getElementById("pwaDismissBtn");
 
-  // Service Worker desativado - descomente quando hospedar em produção
-  // if ("serviceWorker" in navigator) {
-  //   navigator.serviceWorker.register("sw.js")
-  //     .then(reg => console.log("SW registered"))
-  //     .catch(err => console.log("SW error:", err));
-  // }
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  }
 
   // Install Prompt
   window.addEventListener("beforeinstallprompt", (e) => {
@@ -29,7 +26,7 @@ export function initPWA() {
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
         if (outcome === "accepted") {
-          console.log("PWA installed");
+          localStorage.setItem("pwaInstalled", "true");
         }
         deferredPrompt = null;
         pwaBanner?.classList.remove("show");

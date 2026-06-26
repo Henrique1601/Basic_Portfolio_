@@ -3,9 +3,9 @@ import { getCurrentLang } from "./translate.js";
 export function initModal() {
   const modal = document.createElement("div");
   modal.className = "modal";
-  modal.innerHTML = `
+    modal.innerHTML = `
     <div class="modal__content">
-      <button class="modal__close">&times;</button>
+      <button class="modal__close" aria-label="Fechar">&times;</button>
       <img class="modal__image" src="" alt="" id="modalMainImage">
       <div class="gallery" id="modalGallery"></div>
       <div class="modal__body">
@@ -104,17 +104,21 @@ export function initFiltersAndPagination() {
 
     let paginationHTML = "";
 
-    paginationHTML += `<button class="pagination__btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? "disabled" : ""}>
+    const prevLabel = getCurrentLang() === "pt" ? "Página anterior" : "Previous page";
+    const nextLabel = getCurrentLang() === "pt" ? "Próxima página" : "Next page";
+    const pageLabel = getCurrentLang() === "pt" ? "Página" : "Page";
+
+    paginationHTML += `<button class="pagination__btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? "disabled" : ""} aria-label="${prevLabel}">
       ${prevText}
     </button>`;
 
     for (let i = 1; i <= totalPages; i++) {
-      paginationHTML += `<button class="pagination__btn ${i === currentPage ? "active" : ""}" onclick="changePage(${i})">
+      paginationHTML += `<button class="pagination__btn ${i === currentPage ? "active" : ""}" onclick="changePage(${i})" aria-label="${pageLabel} ${i}">
         ${i}
       </button>`;
     }
 
-    paginationHTML += `<button class="pagination__btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? "disabled" : ""}>
+    paginationHTML += `<button class="pagination__btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? "disabled" : ""} aria-label="${nextLabel}">
       ${nextText}
     </button>`;
 

@@ -104,6 +104,8 @@
   border: 1px solid var(--border-color);
   border-radius: 8px;
   cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
   transition: all 0.3s ease;
 }
 
@@ -625,6 +627,12 @@
     height: 45px;
   }
   
+  .time-on-page {
+    bottom: 8rem;
+    left: 1rem;
+    font-size: 0.75rem;
+  }
+  
   .back-to-top {
     right: 1rem;
     bottom: 10rem;
@@ -633,5 +641,18 @@
   .pwa-install-banner__content {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-widget__button {
+    animation: none;
+  }
+
+  .confetti {
+    display: none;
   }
 }

@@ -19,7 +19,7 @@ export function initMaisProjetos() {
   if (!Btn_avancar) return;
 
   Btn_avancar.addEventListener("click", () => {
-    window.location.href = "./MoreProjects/index.html";
+    window.location.href = "./index.html#projects";
   });
 }
 

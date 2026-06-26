@@ -113,7 +113,7 @@ function initBackToTop() {
     } else {
       backToTop.classList.remove("visible");
     }
-  });
+  }, { passive: true });
 
   backToTop.addEventListener("click", () => {
     window.scrollTo({
@@ -132,7 +132,7 @@ export function initProgressBar() {
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = (scrollTop / docHeight) * 100;
     progressBar.style.width = scrollPercent + "%";
-  });
+  }, { passive: true });
 }
 
 export function initContributionGraph() {

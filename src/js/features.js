@@ -29,6 +29,9 @@ export function initTestimonialsCarousel() {
   for (let i = 0; i < totalSlides; i++) {
     const dot = document.createElement("span");
     dot.className = `testimonials-carousel__dot ${i === 0 ? "active" : ""}`;
+    dot.setAttribute("role", "button");
+    dot.setAttribute("aria-label", `Depoimento ${i + 1}`);
+    dot.setAttribute("tabindex", "0");
     dot.addEventListener("click", () => goToSlide(i));
     dotsContainer.appendChild(dot);
   }
@@ -244,7 +247,7 @@ function showShortcutsHelp() {
   modal.className = "shortcuts-modal";
   modal.innerHTML = `
     <div class="shortcuts-modal__content">
-      <button class="shortcuts-modal__close">&times;</button>
+      <button class="shortcuts-modal__close" aria-label="Fechar">&times;</button>
       <h3>⌨️ Atalhos de Teclado</h3>
       <div class="shortcuts-modal__list">
         ${shortcuts.map(([key, desc]) => `
@@ -319,6 +322,7 @@ export function initEnhancedScrollAnimations() {
    ======================================== */
 export function initMouseTrail() {
   if (window.matchMedia("(max-width: 1023px)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   
   const trailContainer = document.createElement("div");
   trailContainer.className = "mouse-trail";

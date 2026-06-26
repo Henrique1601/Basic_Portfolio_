@@ -230,3 +230,41 @@ figure.animate {
 .text-wave span:nth-child(4) { animation-delay: 0.3s; }
 .text-wave span:nth-child(5) { animation-delay: 0.4s; }
 .text-wave span:nth-child(6) { animation-delay: 0.5s; }
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  figure {
+    transform: none;
+    filter: none;
+    opacity: 1;
+  }
+  
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .entrance-stagger > * {
+    opacity: 1;
+    animation: none;
+  }
+  
+  .text-reveal span {
+    transform: none;
+    animation: none;
+  }
+  
+  .text-wave span {
+    animation: none;
+  }
+}

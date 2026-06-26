@@ -334,30 +334,6 @@
 .toast--warning svg { color: #f59e0b; }
 
 /* ========================================
-   TIME ON PAGE
-   ======================================== */
-.time-on-page {
-  position: fixed;
-  bottom: 6rem;
-  left: 1.5rem;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 50px;
-  color: var(--text-primary);
-  font-size: 0.85rem;
-  backdrop-filter: blur(10px);
-}
-
-.time-on-page svg {
-  color: var(--accent-color);
-}
-
-/* ========================================
    KEYBOARD SHORTCUTS MODAL
    ======================================== */
 .shortcuts-modal {
@@ -517,13 +493,33 @@
   }
 }
 
-@media (max-width: 768px) {
-  .time-on-page {
-    bottom: 8rem;
-    left: 1rem;
-    font-size: 0.75rem;
+@media (prefers-reduced-motion: reduce) {
+  .modal__content {
+    animation: none;
   }
-  
+
+  .mouse-trail {
+    display: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .card-glass:hover {
+    transform: none;
+  }
+
+  .tilt-card {
+    transition: none;
+  }
+
+  .skeleton-loading .scroll-section::after {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
   .toast-container {
     bottom: 1rem;
     left: 1rem;

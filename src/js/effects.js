@@ -35,8 +35,11 @@ export function playSound(type) {
   oscillator.stop(audioContext.currentTime + 0.05);
 }
 
+const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 export function initConfetti() {
   window.launchConfetti = function() {
+    if (prefersReducedMotion()) return;
     const container = document.getElementById("confettiContainer");
     if (!container) return;
     
@@ -61,16 +64,23 @@ export function initConfetti() {
 }
 
 export function initCursor() {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  if (prefersReducedMotion()) return;
+
   const cursor = document.createElement("div");
   cursor.className = "custom-cursor";
   document.body.appendChild(cursor);
 
   let cursorX = 0, cursorY = 0;
   let targetX = 0, targetY = 0;
+  let lastMove = 0;
+  let rafId = null;
 
   document.addEventListener("mousemove", (e) => {
     targetX = e.clientX;
     targetY = e.clientY;
+    lastMove = Date.now();
+    if (!rafId) rafId = requestAnimationFrame(animateCursor);
   });
 
   document.addEventListener("mousedown", () => {
@@ -99,12 +109,16 @@ export function initCursor() {
     cursorY += (targetY - cursorY) * 0.15;
     cursor.style.left = cursorX - 10 + "px";
     cursor.style.top = cursorY - 10 + "px";
-    requestAnimationFrame(animateCursor);
+    if (Date.now() - lastMove < 1000) {
+      rafId = requestAnimationFrame(animateCursor);
+    } else {
+      rafId = null;
+    }
   }
-  animateCursor();
 }
 
 export function initParticles() {
+  if (prefersReducedMotion()) return;
   const canvas = document.createElement("canvas");
   canvas.id = "particles-canvas";
   document.body.insertBefore(canvas, document.body.firstChild);
@@ -166,6 +180,7 @@ export function initParticles() {
 }
 
 export function init3DTilt() {
+  if (prefersReducedMotion()) return;
   document.querySelectorAll(".tilt-card").forEach(card => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
@@ -186,11 +201,19 @@ export function init3DTilt() {
 }
 
 export function initParallax() {
+  if (prefersReducedMotion()) return;
+  let ticking = false;
   window.addEventListener("scroll", () => {
-    const scrolled = window.scrollY;
-    document.querySelectorAll(".morph-shape").forEach((shape, index) => {
-      const speed = (index + 1) * 0.05;
-      shape.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-  });
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY;
+        document.querySelectorAll(".morph-shape").forEach((shape, index) => {
+          const speed = (index + 1) * 0.05;
+          shape.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 }

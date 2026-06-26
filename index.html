@@ -3,30 +3,38 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<!-- APP -->
 	<meta name="description" content="Portfólio de Henrique Bezerra - Full-Stack Developer">
 	<meta name="theme-color" content="#6366f1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta property="og:title" content="Henrique Bezerra - Full-Stack Developer">
 	<meta property="og:description" content="Portfólio profissional com projetos e tecnologias">
-	<meta property="og:image" content="./src/images/IMG_20231010_155423.png">
+	<meta property="og:image" content="./src/images/hero.webp">
+	<link rel="preconnect" href="https://cdn.jsdelivr.net">
+	<link rel="preconnect" href="https://supabase.co">
+	<link rel="preconnect" href="https://api.emailjs.com">
 	<link rel="manifest" href="./manifest.json">
 	<link rel="apple-touch-icon" href="./src/icons/icon.svg">
 	<link rel="icon" type="image/svg+xml" href="./src/icons/icon.svg">
+	
 	<!-- CSS -->
 	<link rel="stylesheet" href="./css/main.css">
+	
 	<title>Henrique Bezerra dos Santos</title>
 
 	<!-- EmailJs -->
-	<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
 	
 	<!-- Supabase -->
-	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 </head>
 
 <body>
+	<a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
 	<!-- Efeitos (carregados via JS) -->
 
 	<!-- Widgets flutuantes (carregados via JS) -->
@@ -34,7 +42,7 @@
 	<!--NAV placeholder -->
 	<header component="header"></header>
 
-	<main class="container">
+	<main class="container" id="main-content">
 		<!-- Seções são carregadas via JS -->
 		<section class="scroll-section" id="home"></section>
 		<section class="scroll-section" id="counters"></section>
