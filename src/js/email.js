@@ -1,6 +1,6 @@
 import { CONFIG } from "./config.js";
 import { getCurrentLang } from "./translate.js";
-import { playSound } from "./effects.js";
+import { playSound, launchConfetti } from "./effects.js";
 
 export function initEmailForm() {
   if (typeof emailjs === "undefined") return;
@@ -44,7 +44,7 @@ export function initEmailForm() {
           : "Message sent successfully!";
         formStatus.className = "form__status success";
         contactForm.reset();
-        if (window.launchConfetti) window.launchConfetti();
+        launchConfetti();
         playSound("success");
       } else {
         throw new Error("Email sending failed");

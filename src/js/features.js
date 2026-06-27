@@ -5,6 +5,7 @@
  */
 
 import { getCurrentLang } from "./translate.js";
+import { observerOptions } from "./animations.js";
 
 /* ========================================
    TESTIMONIALS CAROUSEL
@@ -279,10 +280,6 @@ function showShortcutsHelp() {
    ENHANCED SCROLL ANIMATIONS
    ======================================== */
 export function initEnhancedScrollAnimations() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-  };
   
   // Stagger animation for grid items
   const staggerObserver = new IntersectionObserver((entries) => {

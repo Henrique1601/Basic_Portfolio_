@@ -1,4 +1,6 @@
 import { getCurrentLang } from "./translate.js";
+import { launchConfetti } from "./effects.js";
+import { showToast } from "./features.js";
 
 export function initModal() {
   const modal = document.createElement("div");
@@ -68,7 +70,7 @@ export function initFiltersAndPagination() {
   const projectsPerPage = 6;
   let currentPage = 1;
 
-  window.changePage = function(page) {
+  function changePage(page) {
     const visibleProjects = Array.from(projects).filter(p => !p.classList.contains("hidden"));
     const totalPages = Math.ceil(visibleProjects.length / projectsPerPage);
     
@@ -88,7 +90,7 @@ export function initFiltersAndPagination() {
     });
     
     updatePagination();
-  };
+  }
 
   function updatePagination() {
     const visibleProjects = Array.from(projects).filter(p => !p.classList.contains("hidden"));
@@ -108,22 +110,30 @@ export function initFiltersAndPagination() {
     const nextLabel = getCurrentLang() === "pt" ? "Próxima página" : "Next page";
     const pageLabel = getCurrentLang() === "pt" ? "Página" : "Page";
 
-    paginationHTML += `<button class="pagination__btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? "disabled" : ""} aria-label="${prevLabel}">
+    paginationHTML += `<button class="pagination__btn" data-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""} aria-label="${prevLabel}">
       ${prevText}
     </button>`;
 
     for (let i = 1; i <= totalPages; i++) {
-      paginationHTML += `<button class="pagination__btn ${i === currentPage ? "active" : ""}" onclick="changePage(${i})" aria-label="${pageLabel} ${i}">
+      paginationHTML += `<button class="pagination__btn ${i === currentPage ? "active" : ""}" data-page="${i}" aria-label="${pageLabel} ${i}">
         ${i}
       </button>`;
     }
 
-    paginationHTML += `<button class="pagination__btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? "disabled" : ""} aria-label="${nextLabel}">
+    paginationHTML += `<button class="pagination__btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""} aria-label="${nextLabel}">
       ${nextText}
     </button>`;
 
     pagination.innerHTML = paginationHTML;
   }
+
+  pagination?.addEventListener("click", (e) => {
+    const btn = e.target.closest(".pagination__btn");
+    if (btn && !btn.disabled) {
+      const page = parseInt(btn.getAttribute("data-page"));
+      if (!isNaN(page)) changePage(page);
+    }
+  });
 
   function filterProjects(filter) {
     currentPage = 1;
@@ -182,7 +192,12 @@ export function initNewsletter() {
   
   newsletterForm?.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (window.launchConfetti) window.launchConfetti();
+    const email = newsletterForm.querySelector("input[type=email]")?.value;
+    if (email) {
+      localStorage.setItem("newsletter_email", email);
+      showToast(getCurrentLang() === "pt" ? "Inscrição realizada com sucesso!" : "Successfully subscribed!", "success");
+    }
+    launchConfetti();
     popup.classList.remove("active");
     newsletterForm.reset();
   });

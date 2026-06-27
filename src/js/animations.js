@@ -1,4 +1,4 @@
-const observerOptions = {
+export const observerOptions = {
   threshold: 0.1,
   rootMargin: "0px 0px -50px 0px"
 };
@@ -173,13 +173,13 @@ export function initLightbox() {
   let currentGalleryImages = [];
   let currentImageIndex = 0;
 
-  window.openLightbox = function(images, index) {
+  function openLightbox(images, index) {
     currentGalleryImages = images;
     currentImageIndex = index;
     lightboxImage.src = images[index];
     lightbox.classList.add("active");
     document.body.style.overflow = "hidden";
-  };
+  }
 
   function closeLightbox() {
     lightbox.classList.remove("active");

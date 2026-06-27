@@ -1,4 +1,5 @@
 import { CONFIG } from "./config.js";
+import { getCurrentLang } from "./translate.js";
 
 let supabase = null;
 
@@ -38,7 +39,7 @@ export async function initSupabase() {
     }
 
   } catch (err) {
-    console.log("Supabase não disponível:", err.message);
+    console.warn("Supabase não disponível:", err.message);
     displayVisitCountLocal();
   }
 }
@@ -121,16 +122,14 @@ export async function initCVDownloadCounter() {
             .update({ download_count: count })
             .eq("id", 1);
         } catch (err) {
-          console.log("CV counter update error:", err);
+          console.warn("CV counter update error:", err);
         }
       });
     }
   } catch (err) {
-    console.log("CV counter init error:", err);
+    console.warn("CV counter init error:", err);
     if (cvDownloadCount) cvDownloadCount.textContent = "";
   }
 }
 
-function getCurrentLang() {
-  return localStorage.getItem("lang") || "pt";
-}
+

@@ -27,7 +27,7 @@ export function initMusic() {
           musicToggle.classList.add("playing");
           isMusicPlaying = true;
         } catch (err) {
-          console.log("Audio play blocked:", err);
+          console.warn("Audio play blocked:", err);
         }
       }
       localStorage.setItem("musicPlaying", isMusicPlaying);

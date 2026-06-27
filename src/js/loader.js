@@ -85,7 +85,7 @@ async function loadHTML(path) {
 }
 
 async function loadComponents(components) {
-  for (const [name, config] of Object.entries(components)) {
+  await Promise.all(Object.entries(components).map(async ([name, config]) => {
     const html = await loadHTML(config.path);
     if (html) {
       const position = config.position || 'beforeend';
@@ -94,11 +94,11 @@ async function loadComponents(components) {
         target.insertAdjacentHTML(position, html);
       }
     }
-  }
+  }));
 }
 
 async function loadSections(sections) {
-  for (const [name, config] of Object.entries(sections)) {
+  await Promise.all(Object.entries(sections).map(async ([name, config]) => {
     const target = document.querySelector(config.target);
     if (target) {
       const html = await loadHTML(config.path);
@@ -108,11 +108,11 @@ async function loadSections(sections) {
     } else {
       console.warn(`Target não encontrado: ${config.target}`);
     }
-  }
+  }));
 }
 
 async function loadComponentTags(components) {
-  for (const [name, config] of Object.entries(components)) {
+  await Promise.all(Object.entries(components).map(async ([name, config]) => {
     const target = document.querySelector(config.target);
     if (target) {
       const html = await loadHTML(config.path);
@@ -122,7 +122,7 @@ async function loadComponentTags(components) {
     } else {
       console.warn(`Target não encontrado: ${config.target}`);
     }
-  }
+  }));
 }
 
 export async function initHTMLLoader() {

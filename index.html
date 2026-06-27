@@ -10,9 +10,22 @@
 	<meta name="theme-color" content="#6366f1">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	
+	<!-- Open Graph -->
 	<meta property="og:title" content="Henrique Bezerra - Full-Stack Developer">
 	<meta property="og:description" content="Portfólio profissional com projetos e tecnologias">
-	<meta property="og:image" content="./src/images/hero.webp">
+	<meta property="og:image" content="https://henrique1601.github.io/Basic_Portfolio_/src/images/hero.webp">
+	<meta property="og:url" content="https://henrique1601.github.io/Basic_Portfolio_/">
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="pt_BR">
+	
+	<!-- Twitter Cards -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Henrique Bezerra - Full-Stack Developer">
+	<meta name="twitter:description" content="Portfólio profissional com projetos e tecnologias">
+	<meta name="twitter:image" content="https://henrique1601.github.io/Basic_Portfolio_/src/images/hero.webp">
+	
+	<link rel="canonical" href="https://henrique1601.github.io/Basic_Portfolio_/">
 	<link rel="preconnect" href="https://cdn.jsdelivr.net">
 	<link rel="preconnect" href="https://supabase.co">
 	<link rel="preconnect" href="https://api.emailjs.com">
@@ -30,6 +43,42 @@
 	
 	<!-- Supabase -->
 	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "Person",
+	      "name": "Henrique Bezerra dos Santos",
+	      "url": "https://henrique1601.github.io/Basic_Portfolio_/",
+	      "jobTitle": "Full-Stack Developer",
+	      "sameAs": [
+	        "https://github.com/Henrique1601",
+	        "https://www.linkedin.com/in/henrique-bezerra-dos-santos-9802321a3/"
+	      ]
+	    },
+	    {
+	      "@type": "WebSite",
+	      "name": "Henrique Bezerra - Portfólio",
+	      "url": "https://henrique1601.github.io/Basic_Portfolio_/"
+	    },
+	    {
+	      "@type": "ItemList",
+	      "name": "Projetos",
+	      "url": "https://henrique1601.github.io/Basic_Portfolio_/",
+	      "itemListElement": [
+	        {"@type": "CreativeWork", "name": "Advice Generator", "url": "https://gerador-conselhos.netlify.app/"},
+	        {"@type": "CreativeWork", "name": "Gerador de código QR", "url": "https://geradorqrcodee.netlify.app/"},
+	        {"@type": "CreativeWork", "name": "Financeiro Pessoal", "url": "https://projeto-financeiro-frontend.vercel.app"},
+	        {"@type": "CreativeWork", "name": "To Do Angular"},
+	        {"@type": "CreativeWork", "name": "Calculadora IMC + React"},
+	        {"@type": "CreativeWork", "name": "Dev Notes"}
+	      ]
+	    }
+	  ]
+	}
+	</script>
 </head>
 
 <body>

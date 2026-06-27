@@ -8,11 +8,4 @@ export const CONFIG = {
   PROJECTS_PER_PAGE: 6
 };
 
-export const PATHS = {
-  CSS: "./css/",
-  JS: "./src/js/",
-  IMAGES: "./src/images/",
-  SVG: "./src/svg/",
-  ICONS: "./src/icons/",
-  PDF: "./pdf/"
-};
+

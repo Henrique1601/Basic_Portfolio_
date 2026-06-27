@@ -37,31 +37,31 @@ export function playSound(type) {
 
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-export function initConfetti() {
-  window.launchConfetti = function() {
-    if (prefersReducedMotion()) return;
-    const container = document.getElementById("confettiContainer");
-    if (!container) return;
+export function launchConfetti() {
+  if (prefersReducedMotion()) return;
+  const container = document.getElementById("confettiContainer");
+  if (!container) return;
+  
+  const colors = ["#6366f1", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#3b82f6"];
+  
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "%";
+    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDelay = Math.random() * 2 + "s";
+    confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+    confetti.style.width = (Math.random() * 10 + 5) + "px";
+    confetti.style.height = (Math.random() * 10 + 5) + "px";
+    confetti.style.borderRadius = Math.random() > 0.5 ? "50%" : "0";
     
-    const colors = ["#6366f1", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981", "#3b82f6"];
+    container.appendChild(confetti);
     
-    for (let i = 0; i < 100; i++) {
-      const confetti = document.createElement("div");
-      confetti.className = "confetti";
-      confetti.style.left = Math.random() * 100 + "%";
-      confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-      confetti.style.animationDelay = Math.random() * 2 + "s";
-      confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
-      confetti.style.width = (Math.random() * 10 + 5) + "px";
-      confetti.style.height = (Math.random() * 10 + 5) + "px";
-      confetti.style.borderRadius = Math.random() > 0.5 ? "50%" : "0";
-      
-      container.appendChild(confetti);
-      
-      setTimeout(() => confetti.remove(), 5000);
-    }
-  };
+    setTimeout(() => confetti.remove(), 5000);
+  }
 }
+
+export function initConfetti() {}
 
 export function initCursor() {
   if (window.matchMedia("(pointer: coarse)").matches) return;
