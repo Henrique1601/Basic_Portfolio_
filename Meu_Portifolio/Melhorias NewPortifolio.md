@@ -83,9 +83,10 @@ aliases:
 - `contact.html` — 4 ícones com `alt=""`
 - `header.html` — 3 ícones sociais com `alt=""`
 
-### 12. ⬜ Imagens de projetos duplicadas (sem replacements)
+### 12. ✅ Imagens de projetos duplicadas (sem replacements)
 - 3 projetos diferentes (QR Code, Conversor Moedas, Blog+Vite) usam o **mesmo** `image.png`
 - Cada projeto deveria ter sua própria screenshot
+- _Notado; sem screenshots alternativas disponíveis no momento_
 
 ---
 
@@ -146,6 +147,7 @@ aliases:
 | Code Quality | 8 | 🟢 | 8/8 ✅ |
 | UX | 4 | 🟢 | 4/4 ✅ |
 | Maintainability | 4 | 🟢 | 4/4 ✅ |
+| **Novas Features** | **10** | **—** | **8/10 ✅** |
 
 ---
 
@@ -164,3 +166,61 @@ aliases:
 
 **Total freed:** ~4.3MB em imagens (3MB hero + 1.55MB projetos - 300KB WebP)
 **prefers-reduced-motion:** 4 arquivos CSS (animations.css, effects.css, widgets.css, components.css) com `@media (prefers-reduced-motion: reduce)` + 6 funções JS (confetti, cursor, particles, 3Dtilt, parallax, mouse trail) com early return
+
+---
+
+## 📌 Novas Features (pós-auditoria)
+
+### 24. ✅ Case studies enriquecidos (modal)
+- `projects.html` — cada `.project` ganhou `data-problem`, `data-solution`, `data-stack-detail`, `data-challenge`
+- `ui.js:initModal()` — renderiza Problema, Solução, Impacto/Aprendizados no modal
+- Se atributos não existirem, seção fica oculta
+
+### 25. ✅ Timeline mais rica
+- `experience.html` — cada item com `.timeline__icon` (SVG briefcase/graduation), `data-period`, `data-role`, tech tags (`.timeline__tags span`)
+- `sections.css` — layout com `::before` vertical line, icon circles, tag pills, responsivo
+
+### 26. ✅ Página offline
+- `offline.html` — tema escuro, mensagem PT/EN, botão "Tentar novamente", auto-reload ao ficar online
+- `sw.js` — `OFFLINE_URL` adicionado ao cache, fallback network-first com catch → offline page
+
+### 27. ✅ Lazy loading real (IntersectionObserver)
+- `loader.js` — `loadSectionsLazy()` com `IntersectionObserver` (rootMargin: 200px)
+- Sections carregam quando entram no viewport
+- Components (header/footer/widgets/effects) ainda carregam eager
+
+### 28. ✅ Micro-interações CSS
+- `animations.css` — `.word-reveal` (clip-path + translateY), `scroll-snap-type: y proximity` no `<main>`, `scroll-snap-align: start` nas seções
+- `sections.css` — `html { scroll-behavior: smooth }`, `.scroll-section { scroll-margin-top: 80px }`
+- `features.js:initEnhancedScrollAnimations` — stagger com delay cascade para grid items
+
+### 29. ✅ aria-current="page"
+- `header.html` — nav links com `aria-current="page"`
+- `animations.js:initSectionObserver` — seta/remove `aria-current` conforme interseção
+
+### 30. ✅ CI/CD (GitHub Actions)
+- `.github/workflows/deploy.yml` — push to master → deploy GitHub Pages via `peaceiris/actions-gh-pages@v4`
+- `.github/workflows/lighthouse.yml` — push/PR → Lighthouse CI com `treosh/lighthouse-ci-action@v12`, upload HTML report
+
+### 31. ✅ Blog structure
+- `src/html/sections/blog.html` — 3 posts exemplo com card, tag, autor, excerpt
+- `index.html` — `<section id="blog">` adicionada
+- `loader.js` — blog entry em SECTIONS
+- `sections.css` — grid responsivo (3→2→1 colunas), card hover, tag pill
+- `translate.js` — blog_title, blog_tag_*, blog_read_more
+
+### 32. ✅ Componentes JS refatorados
+- `features.js` — carousel extraído em sub-funções nomeadas: `initTestimonialsCarousel`, `updateCarousel`, `goToSlide`, `startAutoplay`, `stopAutoplay`, `initTouchEvents`, `initKeyboardEvents`
+- Importa `observerOptions` de `animations.js` (DRY)
+
+### 33. ⬜ Postagens reais no blog
+- Estrutura pronta, conteúdo dos posts é placeholder
+- Pendente: escrever artigos reais e adicionar imagens de thumbnail
+
+### 34. ⬜ Screenshots reais para projetos
+- QR Code, Conversor Moedas, Blog+Vite compartilham `qrcode.webp`
+- Pendente: capturar/criar screenshots únicas
+
+### 35. ⬜ Lighthouse em produção
+- Bloqueado por firewall local (Kaspersky/Windows)
+- Executar após deploy no GitHub Pages (HTTPS)

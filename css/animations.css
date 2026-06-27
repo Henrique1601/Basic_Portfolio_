@@ -232,6 +232,70 @@ figure.animate {
 .text-wave span:nth-child(6) { animation-delay: 0.5s; }
 
 /* ========================================
+   WORD REVEAL
+   ======================================== */
+.word-reveal {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.word-reveal span {
+  display: inline-block;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transform: translateY(0);
+  opacity: 0;
+  animation: wordReveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.word-reveal span:nth-child(1) { animation-delay: 0.05s; }
+.word-reveal span:nth-child(2) { animation-delay: 0.1s; }
+.word-reveal span:nth-child(3) { animation-delay: 0.15s; }
+.word-reveal span:nth-child(4) { animation-delay: 0.2s; }
+.word-reveal span:nth-child(5) { animation-delay: 0.25s; }
+.word-reveal span:nth-child(6) { animation-delay: 0.3s; }
+.word-reveal span:nth-child(7) { animation-delay: 0.35s; }
+.word-reveal span:nth-child(8) { animation-delay: 0.4s; }
+.word-reveal span:nth-child(9) { animation-delay: 0.45s; }
+.word-reveal span:nth-child(10) { animation-delay: 0.5s; }
+.word-reveal span:nth-child(11) { animation-delay: 0.55s; }
+.word-reveal span:nth-child(12) { animation-delay: 0.6s; }
+.word-reveal span:nth-child(13) { animation-delay: 0.65s; }
+.word-reveal span:nth-child(14) { animation-delay: 0.7s; }
+.word-reveal span:nth-child(15) { animation-delay: 0.75s; }
+
+@keyframes wordReveal {
+  0% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    transform: translateY(1em);
+    opacity: 0;
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   SCROLL SNAP
+   ======================================== */
+main {
+  scroll-snap-type: y proximity;
+}
+
+.scroll-section {
+  scroll-snap-align: start;
+}
+
+/* ========================================
+   EXPERIENCE SCALE ON SCROLL
+   ======================================== */
+.section__experience .timeline__item.visible {
+  transform: scale(1.02);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ========================================
    REDUCED MOTION
    ======================================== */
 @media (prefers-reduced-motion: reduce) {

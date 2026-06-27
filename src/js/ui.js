@@ -13,6 +13,7 @@ export function initModal() {
       <div class="modal__body">
         <h2 class="modal__title"></h2>
         <p class="modal__description"></p>
+        <div class="modal__case"></div>
         <div class="modal__techs"></div>
         <div class="modal__links"></div>
       </div>
@@ -41,11 +42,26 @@ export function initModal() {
       const imgSrc = project.querySelector("img").src;
       const repoLink = project.querySelector('.links a[href*="github"]')?.href || "#";
       const demoLink = project.querySelector('.links a:last-child')?.href || "#";
+      const problem = project.getAttribute("data-problem") || "";
+      const solution = project.getAttribute("data-solution") || "";
 
       modal.querySelector(".modal__title").textContent = title;
       modal.querySelector(".modal__description").textContent = desc;
       modal.querySelector(".modal__image").src = imgSrc;
       modal.querySelector(".modal__image").alt = title;
+
+      const caseContainer = modal.querySelector(".modal__case");
+      if (problem || solution) {
+        caseContainer.innerHTML = `
+          <h3 class="modal__case-title">Problema</h3>
+          <p class="modal__case-text">${problem}</p>
+          <h3 class="modal__case-title">Solução</h3>
+          <p class="modal__case-text">${solution}</p>
+        `;
+        caseContainer.style.display = "";
+      } else {
+        caseContainer.style.display = "none";
+      }
 
       const techsContainer = modal.querySelector(".modal__techs");
       techsContainer.innerHTML = techs.map(tech => `<span class="modal__tech">${tech}</span>`).join("");

@@ -30,7 +30,18 @@ const translations = {
     previous: "← Anterior",
     next: "Próxima →",
     repository: "Repositório",
-    demo: "Demo"
+    demo: "Demo",
+    blog_title: "Blog",
+    blog_tag_tech: "Tecnologia",
+    blog_tag_dev: "Dev",
+    blog_tag_tutorial: "Tutorial",
+    blog_read_more: "Ler mais",
+    experience_job_1: "Desenvolvedor Front-End - Freelas",
+    experience_desc_1: "Desenvolvimento de landing pages responsivas, integração com APIs, componentização com React e criação de interfaces modernas e otimizadas.",
+    experience_job_2: "Desenvolvedor - Unisanta (Projeto Acadêmico)",
+    experience_desc_2: "Desenvolvimento de aplicação web full-stack com Angular, Node.js e MongoDB. Trabalho em equipe com metodologia ágil.",
+    experience_edu: "Tecnólogo Analise e desenvolvimento de Sistemas",
+    experience_edu_desc: "Unisanta - Universidade Santa Cecília"
   },
   en: {
     projects_title: "Projects",
@@ -63,7 +74,18 @@ const translations = {
     previous: "← Previous",
     next: "Next →",
     repository: "Repository",
-    demo: "Demo"
+    demo: "Demo",
+    blog_title: "Blog",
+    blog_tag_tech: "Tech",
+    blog_tag_dev: "Dev",
+    blog_tag_tutorial: "Tutorial",
+    blog_read_more: "Read more",
+    experience_job_1: "Front-End Developer - Freelance",
+    experience_desc_1: "Building responsive landing pages, API integrations, React componentization, and modern optimized interfaces.",
+    experience_job_2: "Developer - Unisanta (Academic Project)",
+    experience_desc_2: "Full-stack web application with Angular, Node.js and MongoDB. Teamwork with agile methodology.",
+    experience_edu: "Technologist in Systems Analysis and Development",
+    experience_edu_desc: "Unisanta - Santa Cecília University"
   }
 };
 

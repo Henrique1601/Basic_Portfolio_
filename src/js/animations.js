@@ -90,8 +90,10 @@ function initSectionObserver() {
         const id = entry.target.getAttribute("id");
         navLinks.forEach(link => {
           link.classList.remove("active");
+          link.removeAttribute("aria-current");
           if (link.getAttribute("data-section") === id) {
             link.classList.add("active");
+            link.setAttribute("aria-current", "page");
           }
         });
       }

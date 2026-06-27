@@ -54,6 +54,10 @@ const SECTIONS = {
     path: './src/html/sections/testimonials.html',
     target: '#testimonials'
   },
+  blog: {
+    path: './src/html/sections/blog.html',
+    target: '#blog'
+  },
   contact: {
     path: './src/html/sections/contact.html',
     target: '#contacts'
@@ -97,18 +101,36 @@ async function loadComponents(components) {
   }));
 }
 
-async function loadSections(sections) {
-  await Promise.all(Object.entries(sections).map(async ([name, config]) => {
+function loadSectionsLazy(sections) {
+  const entries = Object.entries(sections);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const name = entry.target.dataset.sectionName;
+        observer.unobserve(entry.target);
+
+        const config = sections[name];
+        if (config) {
+          loadHTML(config.path).then(html => {
+            if (html) {
+              entry.target.innerHTML = html;
+            }
+          });
+        }
+      }
+    });
+  }, { rootMargin: '200px' });
+
+  entries.forEach(([name, config]) => {
     const target = document.querySelector(config.target);
     if (target) {
-      const html = await loadHTML(config.path);
-      if (html) {
-        target.innerHTML = html;
-      }
+      target.dataset.sectionName = name;
+      observer.observe(target);
     } else {
       console.warn(`Target não encontrado: ${config.target}`);
     }
-  }));
+  });
 }
 
 async function loadComponentTags(components) {
@@ -128,5 +150,5 @@ async function loadComponentTags(components) {
 export async function initHTMLLoader() {
   await loadComponents(COMPONENTS);
   await loadComponentTags(COMPONENT_TAGS);
-  await loadSections(SECTIONS);
+  loadSectionsLazy(SECTIONS);
 }
