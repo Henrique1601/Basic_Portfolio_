@@ -1,0 +1,33 @@
+{
+  "name": "Portfólio Henrique Bezerra",
+  "short_name": "Henrique Dev",
+  "description": "Portfólio Full-Stack Developer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./src/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "developer", "web"],
+  "shortcuts": [
+    {
+      "name": "Projetos",
+      "short_name": "Projetos",
+      "description": "Ver projetos",
+      "url": "/#projects"
+    },
+    {
+      "name": "Contato",
+      "short_name": "Contato",
+      "description": "Entrar em contato",
+      "url": "/#contacts"
+    }
+  ]
+}

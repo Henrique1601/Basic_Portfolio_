@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://henrique1601.github.io/Basic_Portfolio_/sitemap.xml
