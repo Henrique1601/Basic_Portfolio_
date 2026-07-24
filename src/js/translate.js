@@ -41,7 +41,9 @@ const translations = {
     experience_job_2: "Desenvolvedor - Unisanta (Projeto Acadêmico)",
     experience_desc_2: "Desenvolvimento de aplicação web full-stack com Angular, Node.js e MongoDB. Trabalho em equipe com metodologia ágil.",
     experience_edu: "Tecnólogo Analise e desenvolvimento de Sistemas",
-    experience_edu_desc: "Unisanta - Universidade Santa Cecília"
+    experience_edu_desc: "Unisanta - Universidade Santa Cecília",
+    experience_postgrad_ai: "Pós-graduação em Inteligência Artificial",
+    experience_postgrad_ai_desc: "Unisanta (EaD) — 600h. Fundamentos de IA, Python, Machine Learning, Deep Learning, PLN, Visão Computacional e Agentes com IA."
   },
   en: {
     projects_title: "Projects",
@@ -85,7 +87,9 @@ const translations = {
     experience_job_2: "Developer - Unisanta (Academic Project)",
     experience_desc_2: "Full-stack web application with Angular, Node.js and MongoDB. Teamwork with agile methodology.",
     experience_edu: "Technologist in Systems Analysis and Development",
-    experience_edu_desc: "Unisanta - Santa Cecília University"
+    experience_edu_desc: "Unisanta - Santa Cecília University",
+    experience_postgrad_ai: "Postgraduate in Artificial Intelligence",
+    experience_postgrad_ai_desc: "Unisanta (Online) — 600h. AI fundamentals, Python, Machine Learning, Deep Learning, NLP, Computer Vision and AI Agents."
   }
 };
 
