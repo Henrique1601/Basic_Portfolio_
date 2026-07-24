@@ -101,36 +101,16 @@ async function loadComponents(components) {
   }));
 }
 
-function loadSectionsLazy(sections) {
-  const entries = Object.entries(sections);
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const name = entry.target.dataset.sectionName;
-        observer.unobserve(entry.target);
-
-        const config = sections[name];
-        if (config) {
-          loadHTML(config.path).then(html => {
-            if (html) {
-              entry.target.innerHTML = html;
-            }
-          });
-        }
-      }
-    });
-  }, { rootMargin: '200px' });
-
-  entries.forEach(([name, config]) => {
+async function loadSectionsEager(sections) {
+  await Promise.all(Object.entries(sections).map(async ([name, config]) => {
     const target = document.querySelector(config.target);
     if (target) {
-      target.dataset.sectionName = name;
-      observer.observe(target);
-    } else {
-      console.warn(`Target não encontrado: ${config.target}`);
+      const html = await loadHTML(config.path);
+      if (html) {
+        target.innerHTML = html;
+      }
     }
-  });
+  }));
 }
 
 async function loadComponentTags(components) {
@@ -150,5 +130,5 @@ async function loadComponentTags(components) {
 export async function initHTMLLoader() {
   await loadComponents(COMPONENTS);
   await loadComponentTags(COMPONENT_TAGS);
-  loadSectionsLazy(SECTIONS);
+  await loadSectionsEager(SECTIONS);
 }
