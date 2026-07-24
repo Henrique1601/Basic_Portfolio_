@@ -48,9 +48,8 @@ async function initApp() {
   // New features
   initAllFeatures();
   
-  initSupabase().then(() => {
-    initCVDownloadCounter();
-  });
+  initSupabase();
+  initCVDownloadCounter();
   
   initEmailForm();
   
