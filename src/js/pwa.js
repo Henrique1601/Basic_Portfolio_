@@ -6,7 +6,7 @@ export function initPWA() {
   const pwaDismissBtn = document.getElementById("pwaDismissBtn");
 
   if ("serviceWorker" in navigator && location.protocol === "https:") {
-    navigator.serviceWorker.register("sw.js").catch(() => {});
+    navigator.serviceWorker.register("./src/js/sw.js").catch(() => {});
   }
 
   // Install Prompt
