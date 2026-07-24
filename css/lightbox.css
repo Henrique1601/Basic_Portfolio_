@@ -142,7 +142,8 @@
   margin-bottom: 1.5rem;
 }
 
-.contribution-graph__title h4 {
+.contribution-graph__title h4,
+.contribution-graph__title h3 {
   color: var(--text-primary);
   font-size: 1rem;
 }

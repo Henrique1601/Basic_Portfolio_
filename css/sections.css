@@ -290,13 +290,15 @@
 }
 
 .section__techs .description figure img {
-  width: 40px;
+  width: 48px;
+  height: auto;
 }
 
 /* ========================================
    PROJECTS
    ======================================== */
 .section__projects h4,
+.section__projects h3,
 .section__projects h2,
 .section__projects p {
   color: var(--text-primary); 
@@ -355,7 +357,8 @@
   display: none;
 }
 
-.projects__container .project img {
+.projects__container .project img,
+.projects__container .project .blog__placeholder {
   width: 100%;
   object-fit: cover;
   height: 200px;
@@ -386,7 +389,8 @@
   margin-top: 0.5rem;
 }
 
-.projects__container .project .project__description h4 {
+.projects__container .project .project__description h4,
+.projects__container .project .project__description h3 {
   font-size: 1.2rem;
 }
 
@@ -496,7 +500,8 @@
   margin-bottom: 0.5rem;
 }
 
-.timeline__content h4 {
+.timeline__content h4,
+.timeline__content h3 {
   color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
@@ -540,7 +545,8 @@
   font-size: 2.5rem;
 }
 
-.certificate__content h4 {
+.certificate__content h4,
+.certificate__content h3 {
   color: var(--text-primary);
   font-size: 1rem;
   margin-bottom: 0.25rem;

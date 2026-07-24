@@ -194,7 +194,8 @@
 		padding: 1rem;
 	}
 	
-	.timeline__content h4 {
+	.timeline__content h4,
+	.timeline__content h3 {
 		font-size: 1rem;
 	}
 	
@@ -206,7 +207,8 @@
 		min-height: 350px;
 	}
 	
-	.project__description h4 {
+	.project__description h4,
+	.project__description h3 {
 		font-size: 1rem;
 	}
 	

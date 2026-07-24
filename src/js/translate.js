@@ -132,6 +132,9 @@ export function initTranslate() {
       </svg>`;
     }
     langLabel.textContent = currentLang.toUpperCase();
+    if (langToggle) {
+      langToggle.setAttribute("aria-label", (currentLang === "pt" ? "Mudar idioma: " : "Change language: ") + currentLang.toUpperCase());
+    }
   }
 
   if (langToggle) {
