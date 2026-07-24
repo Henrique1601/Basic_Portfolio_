@@ -372,6 +372,56 @@ export function initSkeletonLoading() {
 }
 
 /* ========================================
+   BLOG READ MORE
+   ======================================== */
+export function initBlogReadMore() {
+  document.querySelectorAll(".blog__read-more").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".blog__card");
+      if (!card) return;
+
+      const title = card.querySelector(".blog__title")?.textContent || "";
+      const excerpt = card.querySelector(".blog__excerpt")?.textContent || "";
+
+      const modal = document.createElement("div");
+      modal.className = "modal active";
+      modal.innerHTML = `
+        <div class="modal__content">
+          <button class="modal__close" aria-label="Fechar">&times;</button>
+          <div class="modal__body">
+            <h2 class="modal__title">${title}</h2>
+            <p class="modal__description">${excerpt}</p>
+            <p style="color:var(--text-secondary);margin-top:1rem;font-size:0.9rem;">
+              ${getCurrentLang() === "pt"
+                ? "Artigo completo disponível em breve."
+                : "Full article coming soon."}
+            </p>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(modal);
+
+      const close = () => {
+        modal.classList.remove("active");
+        setTimeout(() => modal.remove(), 300);
+      };
+
+      modal.querySelector(".modal__close").addEventListener("click", close);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) close();
+      });
+      document.addEventListener("keydown", function onKey(e) {
+        if (e.key === "Escape") {
+          close();
+          document.removeEventListener("keydown", onKey);
+        }
+      });
+    });
+  });
+}
+
+/* ========================================
    INIT ALL FEATURES
    ======================================== */
 export function initAllFeatures() {
@@ -381,4 +431,5 @@ export function initAllFeatures() {
   initEnhancedScrollAnimations();
   initMouseTrail();
   initSkeletonLoading();
+  initBlogReadMore();
 }
