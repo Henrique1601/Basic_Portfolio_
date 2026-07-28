@@ -167,13 +167,17 @@
 		font-size: 1.1rem;
 	}
 	
-	.section__techs .description {
-		gap: 0.5rem;
+	.techs__grid figure {
+		width: 100px;
+		padding: 0.75rem 0.5rem;
 	}
 	
-	.section__techs .description figure {
-		width: 45%;
-		min-width: 100px;
+	.techs__grid figure img {
+		width: 32px;
+	}
+	
+	.techs__grid figure figcaption {
+		font-size: 0.75rem;
 	}
 
 	.timeline {
@@ -263,18 +267,17 @@
 		font-size: 0.8rem;
 	}
 
-	.section__techs .description figure {
-		width: 40%;
-		min-width: 80px;
+	.techs__grid figure {
+		width: 85px;
 		padding: 0.5rem;
 	}
 
-	.section__techs .description figure img {
+	.techs__grid figure img {
 		width: 28px;
 	}
 	
-	.section__techs .description figure figcaption {
-		font-size: 0.7rem;
+	.techs__grid figure figcaption {
+		font-size: 0.65rem;
 	}
 
 	.contact__links a {
