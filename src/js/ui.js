@@ -41,7 +41,7 @@ export function initModal() {
       const techs = Array.from(project.querySelectorAll(".tag")).map(tag => tag.textContent);
       const imgSrc = project.querySelector("img").src;
       const repoLink = project.querySelector('.links a[href*="github"]')?.href || "#";
-      const demoLink = project.querySelector('.links a:last-child')?.href || "#";
+      const demoLink = Array.from(project.querySelectorAll('.links a')).find(a => a.textContent.trim().toLowerCase() === "demo")?.href || "#";
       const problem = project.getAttribute("data-problem") || "";
       const solution = project.getAttribute("data-solution") || "";
 
