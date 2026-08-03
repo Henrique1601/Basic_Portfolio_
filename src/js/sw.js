@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portfolio-henrique-v6';
+const CACHE_NAME = 'portfolio-henrique-v7';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();

@@ -144,6 +144,12 @@
   align-items: center;
 }
 
+.skill-item + .skill-item {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
 .skill-label {
   font-weight: bold;
   color: var(--text-primary);
@@ -177,12 +183,90 @@
   color: var(--text-primary);
 }
 
-.section__apresentation .section__apresentation--text > span {
+.hero__role {
   border-right: 5px solid var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
-  animation: typewriter 2s steps(13) 1s alternate,
-    blink 800ms steps(13) infinite normal;
+  animation: typewriter 2s steps(23) 1s alternate,
+    blink 800ms steps(23) infinite normal;
+}
+
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  margin-bottom: 1.2rem;
+}
+
+.availability-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.hero__tagline {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  text-align: center;
+  max-width: 460px;
+  line-height: 1.6;
+  margin-top: 1.5rem;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero__cta {
+  padding: 0.75rem 1rem;
+}
+
+.hero__social {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.hero__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero__social a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px var(--shadow-color);
+}
+
+.hero__social img {
+  width: 22px;
+  height: 22px;
 }
 
 .section__apresentation .section__apresentation--text a {

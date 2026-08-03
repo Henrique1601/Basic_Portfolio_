@@ -203,6 +203,61 @@
 }
 
 /* ========================================
+   BLOG ARTICLE MODAL
+   ======================================== */
+.blog-article .modal__title {
+  margin-top: 1rem;
+}
+
+.blog-article .blog__tag {
+  position: static;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.blog-article__meta {
+  display: flex;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-article__intro {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  padding: 1.2rem;
+  background: var(--bg-primary);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 8px;
+}
+
+.blog-article__heading {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.blog-article__paragraph {
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.blog-article__conclusion {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+/* ========================================
    FORMS
    ======================================== */
 .form__group {

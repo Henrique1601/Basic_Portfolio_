@@ -6,6 +6,7 @@
 
 import { getCurrentLang } from "./translate.js";
 import { observerOptions } from "./animations.js";
+import { blogArticles } from "./blog-articles.js";
 
 /* ========================================
    TESTIMONIALS CAROUSEL
@@ -380,22 +381,35 @@ export function initBlogReadMore() {
       const card = btn.closest(".blog__card");
       if (!card) return;
 
-      const title = card.querySelector(".blog__title")?.textContent || "";
-      const excerpt = card.querySelector(".blog__excerpt")?.textContent || "";
+      const key = card.dataset.article || "service-worker";
+      const lang = getCurrentLang();
+      const article = blogArticles[lang]?.[key] || blogArticles.pt[key];
+
+      if (!article) return;
+
+      const sectionsHTML = article.sections
+        .map(s => `
+          <h3 class="blog-article__heading">${s.heading}</h3>
+          <p class="blog-article__paragraph">${s.body}</p>
+        `)
+        .join("");
 
       const modal = document.createElement("div");
       modal.className = "modal active";
       modal.innerHTML = `
         <div class="modal__content">
           <button class="modal__close" aria-label="Fechar">&times;</button>
-          <div class="modal__body">
-            <h2 class="modal__title">${title}</h2>
-            <p class="modal__description">${excerpt}</p>
-            <p style="color:var(--text-secondary);margin-top:1rem;font-size:0.9rem;">
-              ${getCurrentLang() === "pt"
-                ? "Artigo completo disponível em breve."
-                : "Full article coming soon."}
-            </p>
+          <div class="modal__body blog-article">
+            <span class="blog__tag">${article.tag}</span>
+            <h2 class="modal__title">${article.title}</h2>
+            <div class="blog-article__meta">
+              <span>${article.date}</span>
+              <span>•</span>
+              <span>${article.readingTime}</span>
+            </div>
+            <p class="blog-article__intro">${article.intro}</p>
+            ${sectionsHTML}
+            <p class="blog-article__conclusion">${article.conclusion}</p>
           </div>
         </div>
       `;
