@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": {
+    "paths": [
+      "C:\\Users\\conta\\.agents\\skills\\accessibility-review",
+      "C:\\Users\\conta\\.agents\\skills\\web-design-guidelines",
+      "C:\\Users\\conta\\.agents\\skills\\webapp-testing",
+      "C:\\Users\\conta\\.agents\\skills\\supabase"
+    ]
+  }
+}
