@@ -5,13 +5,16 @@ import { showToast } from "./features.js";
 export function initModal() {
   const modal = document.createElement("div");
   modal.className = "modal";
-    modal.innerHTML = `
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-modal", "true");
+  modal.setAttribute("aria-labelledby", "modalTitle");
+  modal.innerHTML = `
     <div class="modal__content">
       <button class="modal__close" aria-label="Fechar">&times;</button>
       <img class="modal__image" src="" alt="" id="modalMainImage">
       <div class="gallery" id="modalGallery"></div>
       <div class="modal__body">
-        <h2 class="modal__title"></h2>
+        <h2 class="modal__title" id="modalTitle"></h2>
         <p class="modal__description"></p>
         <div class="modal__case"></div>
         <div class="modal__techs"></div>
@@ -21,25 +24,46 @@ export function initModal() {
   `;
   document.body.appendChild(modal);
 
-  const modalClose = modal.querySelector(".modal__close");
-  modalClose.addEventListener("click", () => {
+  let lastFocusedElement = null;
+
+  const closeModal = () => {
     modal.classList.remove("active");
-  });
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+    }
+  };
+
+  const modalClose = modal.querySelector(".modal__close");
+  modalClose.addEventListener("click", closeModal);
 
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
-      modal.classList.remove("active");
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("active")) {
+      closeModal();
     }
   });
 
   document.querySelectorAll(".project").forEach(project => {
-    project.addEventListener("click", (e) => {
-      if (e.target.tagName === "A") return;
+    project.setAttribute("tabindex", "0");
+    project.setAttribute("role", "button");
+    const pTitle = project.querySelector("h3, h4")?.textContent?.trim() || "Projeto";
+    project.setAttribute("aria-label", `Ver detalhes do projeto ${pTitle}`);
 
-      const title = project.querySelector("h4").textContent;
-      const desc = project.querySelector(".project__description p:first-of-type").textContent;
-      const techs = Array.from(project.querySelectorAll(".tag")).map(tag => tag.textContent);
-      const imgSrc = project.querySelector("img").src;
+    const handleOpen = (e) => {
+      if (e.target.closest(".links a")) return;
+
+      lastFocusedElement = project;
+
+      const title = project.querySelector("h3, h4")?.textContent?.trim() || "";
+      const desc = project.querySelector(".project__description p:first-of-type")?.textContent?.trim() || "";
+      const techs = Array.from(project.querySelectorAll(".tag")).map(tag => tag.textContent.trim());
+      const imgEl = project.querySelector("img");
+      const imgSrc = imgEl ? imgEl.src : "";
       const repoLink = project.querySelector('.links a[href*="github"]')?.href || "#";
       const demoLink = Array.from(project.querySelectorAll('.links a')).find(a => a.textContent.trim().toLowerCase() === "demo")?.href || "#";
       const problem = project.getAttribute("data-problem") || "";
@@ -47,15 +71,25 @@ export function initModal() {
 
       modal.querySelector(".modal__title").textContent = title;
       modal.querySelector(".modal__description").textContent = desc;
-      modal.querySelector(".modal__image").src = imgSrc;
-      modal.querySelector(".modal__image").alt = title;
+
+      const modalImage = modal.querySelector(".modal__image");
+      if (imgSrc) {
+        modalImage.src = imgSrc;
+        modalImage.alt = title;
+        modalImage.style.display = "block";
+      } else {
+        modalImage.src = "";
+        modalImage.alt = "";
+        modalImage.style.display = "none";
+      }
 
       const caseContainer = modal.querySelector(".modal__case");
       if (problem || solution) {
+        const isPt = getCurrentLang() === "pt";
         caseContainer.innerHTML = `
-          <h3 class="modal__case-title">Problema</h3>
+          <h3 class="modal__case-title">${isPt ? "Problema" : "Problem"}</h3>
           <p class="modal__case-text">${problem}</p>
-          <h3 class="modal__case-title">Solução</h3>
+          <h3 class="modal__case-title">${isPt ? "Solução" : "Solution"}</h3>
           <p class="modal__case-text">${solution}</p>
         `;
         caseContainer.style.display = "";
@@ -70,11 +104,22 @@ export function initModal() {
       const repoText = getCurrentLang() === "pt" ? "Repositório" : "Repository";
       const demoText = "Demo";
       linksContainer.innerHTML = `
-        <a href="${repoLink}" target="_blank" class="modal__link">${repoText}</a>
-        ${demoLink !== "#" ? `<a href="${demoLink}" target="_blank" class="modal__link">${demoText}</a>` : ""}
+        <a href="${repoLink}" target="_blank" rel="noopener noreferrer" class="modal__link">${repoText}</a>
+        ${demoLink !== "#" ? `<a href="${demoLink}" target="_blank" rel="noopener noreferrer" class="modal__link">${demoText}</a>` : ""}
       `;
 
       modal.classList.add("active");
+      modalClose.focus();
+    };
+
+    project.addEventListener("click", handleOpen);
+    project.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        if (!e.target.closest(".links a")) {
+          e.preventDefault();
+          handleOpen(e);
+        }
+      }
     });
   });
 }
@@ -176,6 +221,10 @@ export function initFiltersAndPagination() {
       btn.classList.add("active");
       filterProjects(btn.getAttribute("data-filter"));
     });
+  });
+
+  window.addEventListener("languagechange", () => {
+    updatePagination();
   });
 
   filterProjects("all");

@@ -36,7 +36,22 @@ const translations = {
     email_placeholder: "seu@email.com",
     subject_placeholder: "Assunto da mensagem",
     message_placeholder: "Sua mensagem...",
-    footer_copyright: "© 2024 Henrique Bezerra dos Santos. Todos os direitos reservados.",
+    footer_copyright: `© ${new Date().getFullYear()} Henrique Bezerra dos Santos. Todos os direitos reservados.`,
+    nav_home: "Início",
+    nav_about: "Sobre mim",
+    nav_techs: "Tecnologias",
+    nav_projects: "Projetos",
+    nav_experience: "Experiência",
+    nav_certificates: "Certificados",
+    nav_testimonials: "Depoimentos",
+    nav_blog: "Blog",
+    nav_contacts: "Contatos",
+    whatsapp_tooltip: "Fale comigo no WhatsApp!",
+    music_tooltip: "Música ambiente",
+    contact_intro: "Tem algum projeto em mente ou quer conversar? Entre em contato!",
+    contrib_subtitle: "Atividade de contribuições",
+    contrib_less: "Menos",
+    contrib_more: "Mais",
     all: "Todos",
     frontend: "Frontend",
     fullstack: "Full-Stack",
@@ -96,7 +111,22 @@ const translations = {
     email_placeholder: "your@email.com",
     subject_placeholder: "Message subject",
     message_placeholder: "Your message...",
-    footer_copyright: "© 2024 Henrique Bezerra dos Santos. All rights reserved.",
+    footer_copyright: `© ${new Date().getFullYear()} Henrique Bezerra dos Santos. All rights reserved.`,
+    nav_home: "Home",
+    nav_about: "About me",
+    nav_techs: "Technologies",
+    nav_projects: "Projects",
+    nav_experience: "Experience",
+    nav_certificates: "Certificates",
+    nav_testimonials: "Testimonials",
+    nav_blog: "Blog",
+    nav_contacts: "Contacts",
+    whatsapp_tooltip: "Chat with me on WhatsApp!",
+    music_tooltip: "Ambient music",
+    contact_intro: "Have a project in mind or want to chat? Get in touch!",
+    contrib_subtitle: "Contribution activity",
+    contrib_less: "Less",
+    contrib_more: "More",
     all: "All",
     frontend: "Frontend",
     fullstack: "Full-Stack",
@@ -130,21 +160,31 @@ export function initTranslate() {
   langLabel = document.getElementById("langLabel");
 
   function translatePage(lang) {
+    document.documentElement.setAttribute("lang", lang === "pt" ? "pt-BR" : "en");
+
     document.querySelectorAll("[data-translate]").forEach(el => {
       const key = el.getAttribute("data-translate");
-      if (translations[lang][key]) {
+      if (translations[lang] && translations[lang][key]) {
         el.textContent = translations[lang][key];
       }
     });
 
     document.querySelectorAll("[data-translate-placeholder]").forEach(el => {
       const key = el.getAttribute("data-translate-placeholder");
-      if (translations[lang][key]) {
+      if (translations[lang] && translations[lang][key]) {
         el.placeholder = translations[lang][key];
       }
     });
 
+    document.querySelectorAll("[data-translate-aria-label]").forEach(el => {
+      const key = el.getAttribute("data-translate-aria-label");
+      if (translations[lang] && translations[lang][key]) {
+        el.setAttribute("aria-label", translations[lang][key]);
+      }
+    });
+
     localStorage.setItem("lang", lang);
+    window.dispatchEvent(new CustomEvent("languagechange", { detail: { lang } }));
   }
 
   function updateLangUI() {

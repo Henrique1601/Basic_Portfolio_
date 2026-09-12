@@ -3,12 +3,12 @@ export function initMenu() {
   if (!btnMenu) return;
 
   document.addEventListener("click", (event) => {
-    if (event.target !== btnMenu) {
+    if (!event.target.closest(".menu")) {
       btnMenu.checked = false;
     }
 
     const navLink = event.target.closest(".menu ul li a");
-    if (navLink && window.innerWidth < 600) {
+    if (navLink) {
       btnMenu.checked = false;
     }
   });

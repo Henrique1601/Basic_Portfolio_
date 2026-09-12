@@ -107,7 +107,7 @@ async function loadSectionsEager(sections) {
     if (target) {
       const html = await loadHTML(config.path);
       if (html) {
-        target.innerHTML = html;
+        target.outerHTML = html;
       }
     }
   }));
