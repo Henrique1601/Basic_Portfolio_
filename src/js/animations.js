@@ -137,22 +137,55 @@ export function initProgressBar() {
   }, { passive: true });
 }
 
-export function initContributionGraph() {
+export async function initContributionGraph() {
   const contributionGrid = document.getElementById("contributionGrid");
+  const totalEl = document.getElementById("totalContributions");
   if (!contributionGrid) return;
 
   const levels = ["", "level-1", "level-2", "level-3", "level-4"];
+  const CACHE_KEY = "gh_contributions_Henrique1601";
 
-  function generateContributions() {
-    const weeks = 52;
-    const daysPerWeek = 7;
+  function formatDate(dateStr, isPt) {
+    try {
+      const parts = dateStr.split("-");
+      if (parts.length === 3) {
+        const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+        return d.toLocaleDateString(isPt ? "pt-BR" : "en-US", {
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        });
+      }
+    } catch (_) {}
+    return dateStr;
+  }
+
+  function renderGrid(contributions, total) {
+    if (totalEl && total !== undefined && total !== null) {
+      totalEl.textContent = total;
+    }
+
+    if (!Array.isArray(contributions) || contributions.length === 0) return;
+
+    const isPt = (document.documentElement.lang || "pt").toLowerCase().startsWith("pt");
     let html = "";
 
-    for (let w = 0; w < weeks; w++) {
+    for (let i = 0; i < contributions.length; i += 7) {
+      const week = contributions.slice(i, i + 7);
       html += '<div class="contribution-graph__week">';
-      for (let d = 0; d < daysPerWeek; d++) {
-        const level = Math.floor(Math.random() * 5);
-        html += `<div class="contribution-graph__day ${levels[level]}"></div>`;
+      for (const day of week) {
+        const levelClass = levels[day.level] || "";
+        const formattedDate = formatDate(day.date, isPt);
+        let tip = "";
+        if (!day.count || day.count === 0) {
+          tip = isPt ? `Nenhuma contribuição em ${formattedDate}` : `No contributions on ${formattedDate}`;
+        } else if (day.count === 1) {
+          tip = isPt ? `1 contribuição em ${formattedDate}` : `1 contribution on ${formattedDate}`;
+        } else {
+          tip = isPt ? `${day.count} contribuições em ${formattedDate}` : `${day.count} contributions on ${formattedDate}`;
+        }
+
+        html += `<div class="contribution-graph__day ${levelClass}" title="${tip}" data-date="${day.date}" data-count="${day.count || 0}"></div>`;
       }
       html += '</div>';
     }
@@ -160,7 +193,57 @@ export function initContributionGraph() {
     contributionGrid.innerHTML = html;
   }
 
-  generateContributions();
+  // 1. Try local cache first for instant render
+  let rendered = false;
+  try {
+    const rawCache = localStorage.getItem(CACHE_KEY);
+    if (rawCache) {
+      const parsed = JSON.parse(rawCache);
+      if (parsed && parsed.data && Array.isArray(parsed.data.contributions)) {
+        renderGrid(parsed.data.contributions, parsed.data.total?.lastYear);
+        rendered = true;
+      }
+    }
+  } catch (_) {}
+
+  // 2. Fallback to local snapshot JSON if cache didn't render
+  if (!rendered) {
+    try {
+      const res = await fetch("src/data/github-contributions.json");
+      if (res.ok) {
+        const localData = await res.json();
+        if (localData && Array.isArray(localData.contributions)) {
+          renderGrid(localData.contributions, localData.total?.lastYear);
+          rendered = true;
+        }
+      }
+    } catch (_) {}
+  }
+
+  // 3. Fetch latest live data from public GitHub API in background
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6000);
+    const apiRes = await fetch("https://github-contributions-api.jogruber.de/v4/Henrique1601?y=last", {
+      signal: controller.signal
+    });
+    clearTimeout(timeout);
+
+    if (apiRes.ok) {
+      const liveData = await apiRes.json();
+      if (liveData && Array.isArray(liveData.contributions)) {
+        renderGrid(liveData.contributions, liveData.total?.lastYear);
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({
+            timestamp: Date.now(),
+            data: liveData
+          }));
+        } catch (_) {}
+      }
+    }
+  } catch (_) {
+    // Graceful fallback
+  }
 }
 
 export function initLightbox() {

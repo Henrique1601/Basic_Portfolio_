@@ -28,7 +28,12 @@ function displayVisitCount(count) {
     <span class="visitor-counter__number">${count}</span>
     <span>${visitsText}</span>
   `;
-  document.body.appendChild(visitorCounter);
+  const footer = document.querySelector(".main-footer");
+  if (footer) {
+    footer.appendChild(visitorCounter);
+  } else {
+    document.body.appendChild(visitorCounter);
+  }
 }
 
 function showWelcomeMessage() {

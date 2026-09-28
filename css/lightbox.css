@@ -140,12 +140,43 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .contribution-graph__title h4,
 .contribution-graph__title h3 {
   color: var(--text-primary);
   font-size: 1rem;
+  margin: 0;
+}
+
+.contribution-graph__user-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent-color);
+  text-decoration: none !important;
+  margin-top: 0.4rem;
+  padding: 3px 10px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.contribution-graph__user-link svg {
+  flex-shrink: 0;
+}
+
+.contribution-graph__user-link:hover {
+  text-decoration: none !important;
+  background: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
 }
 
 .contribution-graph__stats {
@@ -172,13 +203,29 @@
 .contribution-graph__grid {
   display: flex;
   gap: 3px;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.contribution-graph__grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.contribution-graph__grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.contribution-graph__grid::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
 }
 
 .contribution-graph__week {
   display: flex;
   flex-direction: column;
   gap: 3px;
+  flex-shrink: 0;
 }
 
 .contribution-graph__day {

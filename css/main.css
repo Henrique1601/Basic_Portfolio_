@@ -6,7 +6,7 @@
 @import url('animations.css');
 @import url('components.css');
 @import url('widgets.css');
-@import url('lightbox.css');
+@import url('lightbox.css?v=2');
 @import url('effects.css');
 @import url('sections.css');
 @import url('medias.css');

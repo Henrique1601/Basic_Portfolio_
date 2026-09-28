@@ -96,6 +96,9 @@
 }
 
 .stack-moment__title svg {
+  display: inline-block;
+  transform-origin: center;
+  will-change: transform;
   animation: pulse 2s infinite;
 }
 

@@ -394,14 +394,18 @@ export function initBlogReadMore() {
         `)
         .join("");
 
+      const lastFocused = btn;
       const modal = document.createElement("div");
       modal.className = "modal active";
+      modal.setAttribute("role", "dialog");
+      modal.setAttribute("aria-modal", "true");
+      modal.setAttribute("aria-labelledby", "blogModalTitle");
       modal.innerHTML = `
         <div class="modal__content">
           <button class="modal__close" aria-label="Fechar">&times;</button>
           <div class="modal__body blog-article">
             <span class="blog__tag">${article.tag}</span>
-            <h2 class="modal__title">${article.title}</h2>
+            <h2 class="modal__title" id="blogModalTitle">${article.title}</h2>
             <div class="blog-article__meta">
               <span>${article.date}</span>
               <span>•</span>
@@ -419,18 +423,23 @@ export function initBlogReadMore() {
       const close = () => {
         modal.classList.remove("active");
         setTimeout(() => modal.remove(), 300);
+        if (lastFocused) lastFocused.focus();
+        document.removeEventListener("keydown", onKey);
       };
 
-      modal.querySelector(".modal__close").addEventListener("click", close);
+      const onKey = (e) => {
+        if (e.key === "Escape") {
+          close();
+        }
+      };
+
+      const modalClose = modal.querySelector(".modal__close");
+      modalClose.addEventListener("click", close);
       modal.addEventListener("click", (e) => {
         if (e.target === modal) close();
       });
-      document.addEventListener("keydown", function onKey(e) {
-        if (e.key === "Escape") {
-          close();
-          document.removeEventListener("keydown", onKey);
-        }
-      });
+      document.addEventListener("keydown", onKey);
+      modalClose.focus();
     });
   });
 }

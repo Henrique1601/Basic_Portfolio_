@@ -513,18 +513,18 @@
   padding: 0.75rem 0.5rem;
   text-align: center;
   text-decoration: none;
-  font-weight: bold;
-  background: var(--border-color);
-  color: var(--bg-primary);
+  font-weight: 600;
+  background: var(--card-bg-solid);
+  color: var(--text-primary);
   border-radius: 6px;
   border: 1px solid var(--border-color);
   transition: 0.3s ease-in-out;
 }
 
 .projects__container .project .links a:hover {
-  background: var(--card-bg);
-  color: var(--text-primary);
-  border-color: var(--text-primary);
+  background: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
 }
 
 /* ========================================

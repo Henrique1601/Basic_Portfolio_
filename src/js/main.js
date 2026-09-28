@@ -9,7 +9,7 @@ import {
   initProgressBar, 
   initContributionGraph, 
   initLightbox
-} from "./animations.js";
+} from "./animations.js?v=2";
 import { 
   initCursor,
   initParticles,

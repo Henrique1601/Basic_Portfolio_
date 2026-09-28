@@ -177,6 +177,10 @@ footer {
   stroke: var(--text-primary);
 }
 
+[data-theme="light"] img[src*="github_W"] {
+  filter: invert(1);
+}
+
 .lightbox__close {
   font-size: 2rem;
   line-height: 1;

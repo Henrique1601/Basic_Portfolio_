@@ -362,18 +362,19 @@
    ======================================== */
 .time-on-page {
   position: fixed;
-  bottom: 10rem;
+  bottom: 1.5rem;
   left: 1.5rem;
-  z-index: 100;
+  z-index: 90;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: var(--card-bg);
+  padding: 0.4rem 0.85rem;
+  background: var(--card-bg-solid);
   border: 1px solid var(--border-color);
   border-radius: 50px;
   color: var(--text-primary);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  box-shadow: 0 4px 12px var(--shadow-color);
   backdrop-filter: blur(10px);
 }
 
@@ -381,12 +382,25 @@
   color: var(--accent-color);
 }
 
+.visitor-counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
 .visitor-counter__icon {
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.1rem;
 }
 
 .visitor-counter__number {
-  font-weight: bold;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 /* ========================================
@@ -628,9 +642,7 @@
   }
   
   .time-on-page {
-    bottom: 8rem;
-    left: 1rem;
-    font-size: 0.75rem;
+    display: none !important;
   }
   
   .back-to-top {
