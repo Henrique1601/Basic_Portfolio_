@@ -1,5 +1,5 @@
 import { initPWA } from "./pwa.js";
-import { initTranslate, getCurrentLang } from "./translate.js";
+import { initTranslate, getCurrentLang } from "./translate.js?v=3";
 import { initTheme } from "./theme.js";
 import { initMusic } from "./music.js";
 import { initSupabase, initCVDownloadCounter } from "./supabase.js";
@@ -18,9 +18,10 @@ import {
   initConfetti
 } from "./effects.js";
 import { initModal, initFiltersAndPagination, initNewsletter } from "./ui.js";
-import { initMenu, initMaisProjetos, initPreloader } from "./utils.js";
+import { initMenu, initMaisProjetos, initPreloader } from "./utils.js?v=2";
 import { initHTMLLoader } from "./loader.js";
 import { initAllFeatures, showToast } from "./features.js";
+import { initTeaserModal } from "./teaser-modal.js";
 
 async function initApp() {
   await initHTMLLoader();
@@ -47,6 +48,7 @@ async function initApp() {
   
   // New features
   initAllFeatures();
+  initTeaserModal();
   
   initSupabase();
   initCVDownloadCounter();

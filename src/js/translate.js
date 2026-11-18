@@ -3,7 +3,7 @@ const translations = {
     projects_title: "Projetos",
     about_title: "Sobre mim",
     about_intro: "Desenvolvedor Full-Stack com experiência em HTML5, CSS3, JavaScript, Bootstrap, React, Angular e Node.js. Formado em Análise e Desenvolvimento de Sistemas pela Unisanta, com pós-graduação em Inteligência Artificial. Possuo conhecimento em versionamento de código com Git/GitHub, bancos de dados MySQL, SQLite, MongoDB e PostgreSQL, e metodologias ágeis. Busco constantemente aprender novas tecnologias e desenvolver projetos inovadores.",
-    about_summary: "Já entreguei mais de 35 projetos — desde automações com bots, micro-SaaS multi-tenant e plataformas com IA até PWAs offline-first para vistorias de campo e dashboards. Tenho foco em transformar problemas do mundo real em soluções funcionais, com código limpo, testado e documentado.",
+    about_summary: "Já entreguei mais de 45 projetos — desde automações com bots, micro-SaaS multi-tenant e plataformas com IA até PWAs offline-first para vistorias de campo e dashboards. Tenho foco em transformar problemas do mundo real em soluções funcionais, com código limpo, testado e documentado.",
     about_languages_label: "Idiomas:",
     about_languages_value: "Português (Nativo), Inglês (Fluente)",
     about_focus_label: "Foco atual:",
@@ -20,6 +20,7 @@ const translations = {
     available: "Disponível para trabalho",
     hero_tagline: "Construo aplicações web completas que resolvem problemas reais — do frontend ao banco de dados.",
     hero_cta_projects: "Ver projetos",
+    watch_teaser: "Assistir Teaser",
     visits: "visitas",
     send_message: "Enviar Mensagem",
     sending: "Enviando...",
@@ -64,6 +65,8 @@ const translations = {
     blog_tag_tech: "Tecnologia",
     blog_tag_dev: "Dev",
     blog_tag_tutorial: "Tutorial",
+    blog_tag_ai: "Inteligência Artificial",
+    blog_tag_architecture: "Arquitetura",
     blog_read_more: "Ler mais",
     experience_job_1: "Desenvolvedor Front-End - Freelas",
     experience_desc_1: "Desenvolvimento de landing pages responsivas, integração com APIs, componentização com React e criação de interfaces modernas e otimizadas.",
@@ -78,7 +81,7 @@ const translations = {
     projects_title: "Projects",
     about_title: "About me",
     about_intro: "Full-Stack Developer experienced in HTML5, CSS3, JavaScript, Bootstrap, React, Angular and Node.js. Graduated in Systems Analysis and Development from Unisanta, with a postgraduate degree in Artificial Intelligence. Skilled in version control with Git/GitHub, MySQL, SQLite, MongoDB and PostgreSQL databases, and agile methodologies. I constantly seek to learn new technologies and build innovative projects.",
-    about_summary: "I've delivered over 35 projects — from bot automations, multi-tenant micro-SaaS and AI platforms to offline-first PWAs for field inspections and dashboards. I focus on turning real-world problems into functional solutions with clean, tested and documented code.",
+    about_summary: "I've delivered over 45 projects — from bot automations, multi-tenant micro-SaaS and AI platforms to offline-first PWAs for field inspections and dashboards. I focus on turning real-world problems into functional solutions with clean, tested and documented code.",
     about_languages_label: "Languages:",
     about_languages_value: "Portuguese (Native), English (Fluent)",
     about_focus_label: "Current focus:",
@@ -95,6 +98,7 @@ const translations = {
     available: "Available for work",
     hero_tagline: "I build complete web applications that solve real problems — from frontend to database.",
     hero_cta_projects: "View projects",
+    watch_teaser: "Watch Teaser",
     visits: "visits",
     send_message: "Send Message",
     sending: "Sending...",
@@ -139,6 +143,8 @@ const translations = {
     blog_tag_tech: "Tech",
     blog_tag_dev: "Dev",
     blog_tag_tutorial: "Tutorial",
+    blog_tag_ai: "Artificial Intelligence",
+    blog_tag_architecture: "Architecture",
     blog_read_more: "Read more",
     experience_job_1: "Front-End Developer - Freelance",
     experience_desc_1: "Building responsive landing pages, API integrations, React componentization, and modern optimized interfaces.",
@@ -188,34 +194,38 @@ export function initTranslate() {
   }
 
   function updateLangUI() {
-    if (!langFlag || !langLabel) return;
+    const flag = document.getElementById("langFlag");
+    const label = document.getElementById("langLabel");
+    const toggle = document.getElementById("languageToggle");
+    if (!flag || !label) return;
     
     if (currentLang === "pt") {
-      langFlag.innerHTML = `<svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+      flag.innerHTML = `<svg width="20" height="14" viewBox="0 0 20 14" fill="none">
         <rect width="20" height="14" fill="#009B3A"/>
         <circle cx="10" cy="7" r="3.5" fill="#FEDF00"/>
         <path d="M10 3.5C10 3.5 8.5 5 8.5 7C8.5 9 10 10.5 10 10.5C10 10.5 11.5 9 11.5 7C11.5 5 10 3.5 10 3.5Z" fill="#002776"/>
       </svg>`;
     } else {
-      langFlag.innerHTML = `<svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+      flag.innerHTML = `<svg width="20" height="14" viewBox="0 0 20 14" fill="none">
         <rect width="20" height="14" fill="#B22234"/>
         <path d="M0 0L20 14M20 0L0 14" stroke="white" stroke-width="2"/>
         <rect width="10" height="14" fill="#3C3B6E"/>
       </svg>`;
     }
-    langLabel.textContent = currentLang.toUpperCase();
-    if (langToggle) {
-      langToggle.setAttribute("aria-label", (currentLang === "pt" ? "Mudar idioma: " : "Change language: ") + currentLang.toUpperCase());
+    label.textContent = currentLang.toUpperCase();
+    if (toggle) {
+      toggle.setAttribute("aria-label", (currentLang === "pt" ? "Mudar idioma: " : "Change language: ") + currentLang.toUpperCase());
     }
   }
 
-  if (langToggle) {
-    langToggle.addEventListener("click", () => {
+  document.addEventListener("click", (e) => {
+    const toggle = e.target.closest("#languageToggle");
+    if (toggle) {
       currentLang = currentLang === "pt" ? "en" : "pt";
       translatePage(currentLang);
       updateLangUI();
-    });
-  }
+    }
+  });
 
   translatePage(currentLang);
   updateLangUI();

@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-video-teaser",
+  "version": "1.0.0",
+  "description": "Teaser oficial em vídeo do portfólio de Henrique Bezerra dos Santos para LinkedIn e GitHub",
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion render PortfolioTeaser out/teaser-henrique-bezerra.mp4",
+    "build:square": "remotion render PortfolioTeaserSquare out/teaser-linkedin-square.mp4",
+    "build:gif": "remotion render PortfolioTeaserSquare out/teaser-github.gif"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.0"
+  }
+}

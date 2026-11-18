@@ -102,6 +102,98 @@ export const blogArticles = {
       conclusion:
         "Web Components são ótimos para bibliotecas de UI e projetos com múltiplas equipes. Comece com um componente simples e veja como a reutilização deixa seu código mais limpo.",
     },
+    "agentes-autonomos-ia": {
+      title: "Engenharia de Agentes Autônomos & Redes Full-Mesh de IA",
+      date: "14 Nov 2026",
+      tag: "Inteligência Artificial",
+      readingTime: "8 min",
+      intro:
+        "Como saí de prompts soltos para um ecossistema com 16 agentes especialistas em rede Full-Mesh, servidores MCP e execução determinística. Neste artigo compartilho as decisões de arquitetura e padrões de TypeSafe AI que apliquei no SkiilsToIAs e SocialCraft.",
+      sections: [
+        {
+          heading: "1. O problema do 'Agente Faz-Tudo'",
+          body: "Colocar um único prompt gigantesco tentando resolver design, banco de dados, testes e infraestrutura sempre leva a alucinações, esquecimento de requisitos e estouro de contexto. A solução escalável é dividir o trabalho entre agentes especialistas com papéis estritos e contratos claros entre si.",
+        },
+        {
+          heading: "2. A arquitetura Full-Mesh com Skills Orchestrator",
+          body: "Em vez de uma hierarquia rígida onde tudo passa por um único gargalo, conectamos os agentes em uma malha colaborativa. Um arquiteto de banco conversa diretamente com o auditor de segurança, enquanto o engenheiro de design alinha diretamente com o QA. O Skills Orchestrator atua como hub de roteamento de mais de 685 skills catalogadas.",
+        },
+        {
+          heading: "3. TypeSafe AI e Schemas Estritos",
+          body: "Nenhum agente entrega texto livre para outro componente do sistema. Todas as saídas de ferramentas passam por validação rigorosa com Zod e JSON Schemas determinísticos. Se o schema falha, um loop automático de recuperação corrige o payload antes que ele toque qualquer banco de dados ou API.",
+        },
+        {
+          heading: "4. Integração com MCP (Model Context Protocol)",
+          body: "O uso de 26 servidores MCP padronizou a comunicação com Git, bancos Neon/Supabase, navegadores Chrome DevTools e memória externa (ai-memory). Isso desacopla o modelo de linguagem da camada física de execução, permitindo trocar o motor de IA sem reescrever uma linha de integração.",
+        },
+        {
+          heading: "5. Prevenção de Amnésia com Segundo Cérebro",
+          body: "Agentes perdem contexto entre sessões. Resolvemos isso implementando um Segundo Cérebro perene com notas arquiteturais (docs/brain/) e indexação semântica. Toda sessão resgata decisões passadas e lições aprendidas antes de planejar novas tarefas.",
+        },
+      ],
+      conclusion:
+        "Engenharia de agentes não é apenas plugar uma API; é desenhar sistemas distribuídos tolerantes a falhas onde IAs colaboram como engenheiros sêniores coordenados.",
+    },
+    "pwa-offline-first-hidrometros": {
+      title: "Construindo PWAs Offline-First para Vistorias e Hidrômetros",
+      date: "28 Out 2026",
+      tag: "Dev",
+      readingTime: "7 min",
+      intro:
+        "Técnicos de campo enfrentam subsolos e poços de condomínios com sinal de internet zero. Veja como projetei PWAs resilientes com IndexedDB, captura e compressão de fotos na borda e exportação de relatórios sem depender de servidor.",
+      sections: [
+        {
+          heading: "1. A realidade implacável do campo",
+          body: "Durante inspeções de hidrômetros e vistorias de medidores (como no fotos-hidrometros e Vistoria-Cyble-App), a conexão 4G/5G cai constantemente. Se o app depender de requisições HTTP normais para salvar cada leitura, o operador perde dados e retrabalho se torna inevitável.",
+        },
+        {
+          heading: "2. Arquitetura Offline-First com IndexedDB",
+          body: "A regra de ouro: primeiro salva localmente no IndexedDB, depois notifica a interface, e apenas em segundo plano tenta sincronizar com a nuvem quando a conexão retornar. Nenhuma ação do operador fica bloqueada por falhas de rede.",
+        },
+        {
+          heading: "3. Compressão de imagens no cliente (Client-Side Canvas)",
+          body: "Fotos tiradas por câmeras modernas chegam a 8MB cada. Se armazenadas cruas, estouram a cota de armazenamento do navegador. Implementei um pipeline de compressão imediata em WebP via Canvas API antes da gravação no IndexedDB, reduzindo arquivos para menos de 150KB sem perder legibilidade nos números dos relógios.",
+        },
+        {
+          heading: "4. Geração de relatórios (PDF e Excel) sem backend",
+          body: "Em vez de enviar centenas de fotos para um servidor gerar um arquivo ZIP ou PDF, usamos bibliotecas como jsPDF e SheetJS diretamente no browser do operador. O download de relatórios completos é instantâneo e economiza custos astronômicos de servidores cloud.",
+        },
+        {
+          heading: "5. Sincronização em segundo plano resiliente",
+          body: "Com a API de Background Sync e Service Workers, o aplicativo detecta o retorno da internet e sincroniza o lote de vistorias com retry exponencial, garantindo consistência eventual sem que o técnico precise manter a tela aberta.",
+        },
+      ],
+      conclusion:
+        "Pensar offline-first transforma a experiência de quem está na ponta operacional. Apps rápidos, que não travam e respeitam o plano de dados do usuário são os que realmente vencem em produção.",
+    },
+    "microsaas-nextjs-neon": {
+      title: "De Desafio a Micro-SaaS: Arquitetura com Next.js 15 e Neon Postgres",
+      date: "18 Set 2026",
+      tag: "Arquitetura",
+      readingTime: "6 min",
+      intro:
+        "Como estruturei plataformas como AppCraft e DevQuest Pro combinando o ecossistema Next.js 15 com Postgres Serverless da Neon: pooling de conexões, Server Actions seguras e custo quase zero em repouso.",
+      sections: [
+        {
+          heading: "1. O dilema das conexões de banco em Serverless",
+          body: "Aplicações serverless tradicionais abrem uma nova conexão com o banco para cada requisição, esgotando o connection limit rapidamente. Com o Neon Postgres e seu connection pooling nativo via WebSockets, conseguimos manter latência ultrabaixa com milhares de acessos concorrentes sem sobrecarregar a instância.",
+        },
+        {
+          heading: "2. Server Actions tipadas com validação Zod",
+          body: "Substituímos rotas manuais de API por Server Actions nativas do Next.js 15. Combinadas com Zod, garantimos que qualquer dado submetido seja sanitizado no servidor antes de tocar o ORM ou queries SQL, eliminando vulnerabilidades de injeção e inconsistências de tipos.",
+        },
+        {
+          heading: "3. Row-Level Security (RLS) e isolamento multi-tenant",
+          body: "Em plataformas onde usuários gerenciam dados sensíveis, RLS no PostgreSQL garante que nenhum usuário consiga visualizar ou alterar registros de terceiros, mesmo se houvesse uma falha lógica na camada de aplicação. A segurança é aplicada na própria camada de dados.",
+        },
+        {
+          heading: "4. Cache inteligente e renderização híbrida",
+          body: "A combinação de rotas estáticas geradas em build time com revalidação sob demanda (ISR) permite que páginas de catálogo carreguem em milissegundos com nota 100 no Lighthouse, enquanto ações dinâmicas utilizam streaming e Suspense para feedback imediato.",
+        },
+      ],
+      conclusion:
+        "Construir micro-SaaS modernos hoje exige arquiteturas enxutas que escalem automaticamente do zero sem gerar faturas pesadas de infraestrutura. A combinação Next.js + Neon provou ser perfeita para essa meta.",
+    },
   },
   en: {
     "service-worker": {
@@ -199,6 +291,98 @@ export const blogArticles = {
       ],
       conclusion:
         "Web Components are great for UI libraries and multi-team projects. Start with a simple component and see how reuse makes your code cleaner.",
+    },
+    "agentes-autonomos-ia": {
+      title: "Autonomous AI Agent Engineering & Full-Mesh Networks",
+      date: "Nov 14, 2026",
+      tag: "Artificial Intelligence",
+      readingTime: "8 min",
+      intro:
+        "How I evolved from standalone prompts to an ecosystem with 16 specialized agents in a Full-Mesh network, MCP servers, and deterministic execution. In this article I share architectural patterns and TypeSafe AI principles applied in SkiilsToIAs and SocialCraft.",
+      sections: [
+        {
+          heading: "1. The flaw of the 'Do-It-All' Agent",
+          body: "Feeding a single massive prompt trying to solve design, database, testing, and cloud infrastructure always leads to hallucinations and context bloat. The scalable solution is partitioning work into dedicated specialist agents with strict roles and clear inter-agent contracts.",
+        },
+        {
+          heading: "2. Full-Mesh Architecture with Skills Orchestrator",
+          body: "Instead of a rigid hierarchy where everything chokes at a single bottleneck, agents collaborate directly in a mesh. A database architect speaks directly with security auditors, while UI engineers align with QA. The Skills Orchestrator serves as a central router across 685 cataloged capabilities.",
+        },
+        {
+          heading: "3. TypeSafe AI & Strict Schemas",
+          body: "No agent outputs unconstrained prose to another system component. All tool outputs are validated against deterministic Zod and JSON Schemas. If a schema fails, an automated recovery loop fixes the payload before it touches any persistent database or API.",
+        },
+        {
+          heading: "4. Standardization with MCP (Model Context Protocol)",
+          body: "Using 26 MCP servers standardizes communication with Git, Neon/Supabase databases, Chrome DevTools, and external persistent memory (ai-memory). This decouples the LLM from the execution layer, allowing seamless engine upgrades without modifying integration code.",
+        },
+        {
+          heading: "5. Mitigating Amnesia with a Persistent Second Brain",
+          body: "Agents lose context between sessions. We solved this with a persistent Second Brain (docs/brain/) and semantic retrieval. Every session pulls past architectural decisions and lessons learned before planning new tasks.",
+        },
+      ],
+      conclusion:
+        "Agent engineering is not about simply calling an API; it is about designing resilient distributed systems where autonomous AIs collaborate like seasoned senior engineers.",
+    },
+    "pwa-offline-first-hidrometros": {
+      title: "Building Offline-First PWAs for Field Inspections & Utility Meters",
+      date: "Oct 28, 2026",
+      tag: "Dev",
+      readingTime: "7 min",
+      intro:
+        "Field technicians operate in basements and residential wells with zero cellular connectivity. Here is how I designed resilient PWAs with IndexedDB, edge image compression, and client-side report generation without relying on a live server.",
+      sections: [
+        {
+          heading: "1. The Harsh Reality of the Field",
+          body: "During utility meter inspections (such as in fotos-hidrometros and Vistoria-Cyble-App), 4G/5G signal drops constantly. If an app depends on conventional HTTP requests to persist every record, data is lost and rework becomes inevitable.",
+        },
+        {
+          heading: "2. Offline-First Architecture with IndexedDB",
+          body: "The golden rule: persist locally in IndexedDB first, update the UI immediately, and only attempt cloud sync in the background when network connectivity is restored. No user action is ever blocked by network drops.",
+        },
+        {
+          heading: "3. Client-Side Image Compression (Canvas API)",
+          body: "High-res mobile photos easily exceed 8MB each. Storing them raw rapidly breaches browser storage quotas. I built an immediate client-side WebP compression pipeline using the Canvas API before writing to IndexedDB, dropping file size to under 150KB while preserving crystal-clear meter digit readability.",
+        },
+        {
+          heading: "4. Report Generation (PDF & Excel) Without a Backend",
+          body: "Rather than dispatching hundreds of photos to a remote server to assemble a ZIP or PDF, we leverage libraries like jsPDF and SheetJS directly inside the operator's browser. Download is instantaneous and eliminates cloud processing costs.",
+        },
+        {
+          heading: "5. Resilient Background Synchronization",
+          body: "Using Background Sync and Service Workers, the app detects regained connectivity and synchronizes inspection batches with exponential backoff, ensuring eventual consistency without forcing technicians to keep the screen active.",
+        },
+      ],
+      conclusion:
+        "Adopting an offline-first mindset fundamentally elevates the operational user experience. Fast, resilient apps that respect battery and data limits are the ones that truly succeed in production.",
+    },
+    "microsaas-nextjs-neon": {
+      title: "From Challenge to Micro-SaaS: Architecture with Next.js 15 & Neon Postgres",
+      date: "Sep 18, 2026",
+      tag: "Architecture",
+      readingTime: "6 min",
+      intro:
+        "How I structured production platforms like AppCraft and DevQuest Pro combining Next.js 15 with Neon Serverless Postgres: connection pooling, secure Server Actions, and near-zero idle infrastructure cost.",
+      sections: [
+        {
+          heading: "1. The Serverless Database Connection Dilemma",
+          body: "Traditional serverless functions instantiate a new database connection per invocation, exhausting connection limits instantly. With Neon Postgres and native WebSocket connection pooling, we achieve ultra-low latency across thousands of concurrent visitors without overwhelming the database instance.",
+        },
+        {
+          heading: "2. Typed Server Actions with Zod Validation",
+          body: "We replaced manual API endpoints with native Next.js 15 Server Actions. Combined with Zod schemas, every payload is sanitized and validated on the server before touching the database or ORM, eliminating injection vectors and type mismatches.",
+        },
+        {
+          heading: "3. Row-Level Security (RLS) & Multi-Tenant Isolation",
+          body: "In applications where users manage private data, PostgreSQL RLS guarantees that no user can read or modify another tenant's records, even if application logic were flawed. Security is enforced at the database level.",
+        },
+        {
+          heading: "4. Smart Caching & Hybrid Rendering",
+          body: "Combining static pages generated at build time with On-Demand Incremental Static Regeneration (ISR) ensures catalog views load in milliseconds with a 100 Lighthouse score, while dynamic operations utilize React Streaming and Suspense.",
+        },
+      ],
+      conclusion:
+        "Building modern micro-SaaS requires lean architectures that scale from zero automatically without incurring steep monthly hosting bills. Next.js and Neon offer an unmatched combination for this goal.",
     },
   },
 };

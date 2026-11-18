@@ -24,10 +24,12 @@ export function initMaisProjetos() {
 }
 
 export function initPreloader() {
-  const preloader = document.getElementById("preloader");
-  if (preloader) {
+  const preloaders = document.querySelectorAll(".preloader");
+  if (preloaders.length > 0) {
     setTimeout(() => {
-      preloader.classList.add("hidden");
-    }, 1500);
+      preloaders.forEach(p => {
+        p.classList.add("hidden");
+      });
+    }, 1000);
   }
 }

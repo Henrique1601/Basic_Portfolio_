@@ -5,8 +5,8 @@
 @import url('base.css');
 @import url('animations.css');
 @import url('components.css');
-@import url('widgets.css');
+@import url('widgets.css?v=2');
 @import url('lightbox.css?v=2');
 @import url('effects.css');
-@import url('sections.css');
+@import url('sections.css?v=2');
 @import url('medias.css');
